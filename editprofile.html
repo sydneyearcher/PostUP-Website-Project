@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PostUP - Edit Profile</title>
+  <link rel="stylesheet" href="editprofile.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Logo Positioned Outside Navbar -->
+  <div class="nav-logo">
+    <a href="index.html"><img src="images/PostUp LOGO.png" alt="PostUP Logo" /></a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <div class="navbar-container">
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="explore.html" class="explore-btn">EXPLORE</a></li>
+        <li><a href="#">EVENTS</a></li>
+        <li><a href="profile.html" class="active">PROFILE</a></li>
+        <li><a href="index.html" class="logout-btn">LOGOUT</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Header for Edit Profile-->
+  <h1 class="explore-header">EDIT PROFILE</h1>
+
+  <!-- User Info Section -->
+  <div class="user-info">
+    <div class="user-image">
+      <img src="images/profileicon.png" Profile Picture" class="profile-pic" />
+    </div>
+    <div class="user-details">
+      <h2 class="user-name">JOHN DOE</h2>
+      <p class="user-location">ORLANDO, FL</p>
+    </div>
+  </div>
+
+  <!-- Edit Form Section -->
+  <div class="edit-form">
+    <form action="" method="POST">
+      <div class="form-field">
+        <label for="name">FULL NAME</label>
+        <input type="text" id="name" name="name" value="John Doe" required />
+      </div>
+      <div class="form-field">
+        <label for="city">CITY</label>
+        <input type="text" id="city" name="city" value="Orlando" required />
+      </div>
+      <div class="form-field">
+        <label for="state">STATE</label>
+        <input type="text" id="state" name="state" value="FL" required />
+      </div>
+      <div class="form-field">
+        <label for="profile-pic">PROFILE PICTURE</label>
+        <input type="file" id="profile-pic" name="profile-pic" />
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="save-btn">SAVE CHANGES</button>
+        <button type="button" class="cancel-btn">CANCEL</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

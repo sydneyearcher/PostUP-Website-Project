@@ -1,0 +1,212 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #ECE4D6;
+    color: #000000;
+    height: 100vh;
+    min-height: 140vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+    transition: background-color 0.5s ease;
+    padding-top: 80px;
+}
+
+/* Logo Positioned Outside Navbar */
+.nav-logo {
+    position: absolute;
+    left: -10px;
+    top: -30px;
+}
+
+.nav-logo img {
+    width: 200px;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECE4D6;
+    padding: 10px 30px;
+    margin: -40px 0;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 90%;
+    min-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    background-color: #fdbd5e;
+    color: white;
+    padding: 8px 25px;
+}
+
+/* User Info Section */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.user-image {
+    width: 150px;
+    height: 150px;
+}
+
+.user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-details {
+    text-align: left;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.user-location {
+    font-size: 1rem;
+    color: #000000;
+}
+
+/* Edit Form Section */
+.edit-form {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 40px;
+    background-color: #ECE4D6;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000000; /* Added border */
+    transition: box-shadow 0.3s ease;
+}
+
+.edit-form:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Heading Style */
+.explore-header {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 50px;
+    color: black;
+    text-transform: uppercase;
+}
+
+/* Form Field Style */
+.form-field {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-field input:focus {
+    border-color: #fdbd5e;
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Buttons Style */
+.save-btn,
+.cancel-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 48%;
+}
+
+.save-btn {
+    background-color: #fdbd5e;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: rgb(255, 184, 77);
+}
+
+.cancel-btn {
+    background-color: #f7f7f7;
+    color: #333;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #ccc;
+}
