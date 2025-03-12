@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Explore</title>
+    <link rel="stylesheet" href="../../css/main_style/saved_events.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="../../index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="explore.html">EXPLORE</a></li>
+          <li><a href="saved_events.html" class="active">EVENTS</a></li>
+          <li><a href="profile.html" class="profile-btn">PROFILE</a></li>
+          <li><a href="../../index.html" class="logout-btn">LOGOUT</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Saved Events Section -->
+    <main class="events-container">
+      <h1 class="events-header">YOUR SAVED EVENTS</h1>
+      <section class="favorites-container" id="favorites-container">
+        <p class="empty-message">LOADING YOUR FAVORITES...</p>
+        <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <path fill="#000" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+            <animateTransform 
+              attributeName="transform" 
+              attributeType="XML" 
+              type="rotate"
+              dur="1s" 
+              from="0 50 50"
+              to="360 50 50" 
+              repeatCount="indefinite" />
+          </path>
+        </svg>
+      </section>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/user/favorites.js"></script>
+  </body>
+</html>

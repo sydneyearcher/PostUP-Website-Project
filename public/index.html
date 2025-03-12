@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main_style/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  </head>
+  <body>
+    <main>
+    <!-- Loading Screen (Logo only) -->
+    <div id="loadingScreen">
+      <img src="./images/PostUp LOGO.png" alt="PostUp Logo" class="logo" />
+    </div>
+
+    <!-- Main Content Page (Second page after transition) -->
+    <div id="mainContentSection">
+      <!-- Logo centered above the "What's the Move?" text -->
+      <img src="./images/PostUp LOGO.png" alt="PostUp Logo" class="login-logo" />
+
+      <!-- "What's the Move?" Text -->
+      <h1>
+        <span class="whats-the">WHAT'S</span>
+        <span class="the">THE</span>
+        <span class="move">MOVE?</span>
+      </h1>
+
+      <!-- Login Form --><!-- Login Form -->
+      <form id="loginForm" action="./pages/main/explore.html" method="POST">
+        <input class="input-field" type="text" placeholder="USERNAME" id="login-username" required />
+        <input class="input-field" type="password" placeholder="PASSWORD" id="login-password" required />
+
+        <button type="submit" class="btn" id="loginButton">LOGIN</button>
+      </form>
+      <!-- <a href="./pages/main/explore.html" class="btn" id="loginButton">LOGIN</a> -->
+      <!-- Separate Sign-Up Link -->
+      <a href="./pages/signup/signup.html" class="btn" id="signupButton">SIGN UP</a>
+
+    </div>
+  </main>
+    <script src="./js/supabase.js"></script>
+    <script src="./js/util/checkUser.js"></script>
+    <script src="./js/auth/login.js"></script>
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

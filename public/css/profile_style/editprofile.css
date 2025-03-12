@@ -1,0 +1,429 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #ECE4D6;
+    color: #000000;
+    height: 100vh;
+    min-height: 140vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+    transition: background-color 0.5s ease;
+    padding-top: 80px;
+}
+
+/* Logo Positioned Outside Navbar */
+.nav-logo {
+    position: absolute;
+    left: -10px;
+    top: -30px;
+}
+
+.nav-logo img {
+    width: 200px;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECE4D6;
+    padding: 10px 30px;
+    margin: -40px 0;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 90%;
+    min-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    background-color: #fdbd5e;
+    color: white;
+    padding: 8px 25px;
+}
+
+/* User Info Section */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.user-image {
+    width: 150px;
+    height: 150px;
+}
+
+.user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-details {
+    text-align: left;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.user-location {
+    font-size: 1rem;
+    color: #000000;
+}
+
+/* Edit Form Section */
+.edit-form {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 40px;
+    background-color: #ECE4D6;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 3px solid #000000; /* Added border */
+    transition: box-shadow 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Heading Style */
+.explore-header {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 50px;
+    color: black;
+    text-transform: uppercase;
+}
+
+.form-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.form-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: #000000;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Form Field Style */
+.form-field {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+.form-field input, .form-field select {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+}
+
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: 2px solid;
+    outline-color: #faa019;
+}
+
+/* .form-field input:valid {
+    outline: 2px solid;
+    outline-color: #01ee54;
+}
+
+.form-field input:invalid {
+    outline: 2px solid;
+    outline-color: #ee0101;
+} */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Adding custom file input label styles */
+/* .form-field .file-input-label {
+    display: block;
+    background-color: #fdbd5e;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 2.5px solid #000000;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin-top: 5px;
+} */
+
+.form-field .file-input-label {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.form-field .file-input-label:hover {
+    transform: scale(1.03);
+    background-color: #f8ddb5;
+    border: 2px dashed #333;
+    color: #333;
+}
+
+
+/* Custom styling for file upload input */
+/* .form-field input[type="file"]{
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    transition: all 0.3s ease;
+} */
+
+/* Hover state for file input */
+.form-field input[type="file"]:hover {
+    background-color: #f0f0f0;
+    border-color: #fdbd5e;
+}
+
+
+/* Hide the default file input and use our custom styled one */
+.form-field input[type="file"].custom-file-input {
+    display: none;
+}
+
+/* File name display area */
+.file-name-display {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.form-field textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+    min-height: 120px; /* Makes it larger than regular inputs */
+    resize: vertical; /* Allows vertical resizing only */
+}
+
+/* Buttons Style */
+.save-btn,
+.cancel-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 48%;
+    border: 2.5px solid #000000;
+    border-radius: 30px; /* More rounded shape */
+    font-family: 'Oswald', sans-serif;
+}
+
+.save-btn {
+    background-color: #fdbd5e;
+    color: rgb(0, 0, 0);
+    border: 2.5px solid #000000;
+    transition: background-color 0.3s ease;
+    border-radius: 30px; /* More rounded shape */
+    font-family: 'Oswald', sans-serif;
+}
+
+.save-btn:hover {
+    transform: scale(1.05);
+}
+
+.cancel-btn {
+    background-color: #f7f7f7;
+    color: #000000;
+    border: 2.5px solid #000000;
+    transition: background-color 0.3s ease;
+    border-radius: 30px; /* More rounded shape */
+}
+
+.cancel-btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* Preferences Container */
+.preferences-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .preferences-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .preferences-survey {
+    border-radius: 12px;
+    padding: 20px;
+  }
+  
+  /* Category Styling */
+  .preference-category {
+    border: none;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+  
+  .preference-category legend {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding: 0 10px;
+    letter-spacing: 1px;
+  }
+  
+  /* Options Container */
+  .preference-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  /* Individual Option Styling */
+  .preference-option {
+    background-color: #fdbd5e;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Smaller size */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    line-height: 1.1;
+    padding: 5px;
+  }
+  
+  .preference-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .preference-option.selected {
+    border: 3px solid #000;
+    /* box-shadow: 0 0 0 2px #000000, 0 0 0 4px #000; */
+    position: relative;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .preference-option {
+      width: 70px;
+      height: 70px;
+      font-size: 0.8rem;
+    }
+    
+    .preference-options {
+      gap: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .preference-option {
+      width: 60px;
+      height: 60px;
+      font-size: 0.7rem;
+    }
+  }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Edit Profile</title>
+    <link rel="stylesheet" href="../../css/profile_style/editprofile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="../main/index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="../main/explore.html" class="explore-btn">EXPLORE</a></li>
+          <li><a href="../main/saved_events.html">EVENTS</a></li>
+          <li><a href="../main/profile.html" class="active">PROFILE</a></li>
+          <li><a href="../main/index.html" class="logout-btn">LOGOUT</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Header for Edit Profile-->
+    <h1 class="explore-header">EDIT PROFILE</h1>
+
+    <!-- User Info Section -->
+    <div class="user-info">
+      <div class="user-image">
+        <img src="../../images/profileicon.png" class="profile-pic" />
+      </div>
+      <div class="user-details">
+        <h2 class="user-name">JOHN DOE</h2>
+        <p class="user-location">ORLANDO, FL</p>
+      </div>
+    </div>
+
+    <!-- Edit Form Section -->
+    <section class="edit-form">
+      <form action="" method="POST" id="form">
+        <div class="form-section">
+          <h2>PROFILE INFORMATION</h2>
+          <div class="form-field">
+            <label for="edituser-full-name">FULL NAME</label>
+            <input type="text" id="edituser-full-name" name="name" placeholder="Enter your full name..."  />
+          </div>
+          <div class="form-field">
+            <label for="edituser-city">CITY</label>
+            <input type="text" id="edituser-city" name="city" placeholder="Enter your city here..." />
+          </div>
+          <!--<div class="form-field">
+            <label for="state">STATE</label>
+            <input type="text" id="state" name="state" value="FL" required />
+          </div> -->
+          <div class="form-field">
+            <label for="edituser-username">USERNAME</label>
+            <input type="text" id="edituser-username" name="username" placeholder="Enter your username..."  />
+          </div>
+          <div class="form-field">
+            <label for="edituser-state">STATE</label>
+            <select id="edituser-state" name="state">
+              <option value="">Select your state...</option>
+              <option value="Alabama">Alabama</option>
+              <option value="Alaska">Alaska</option>
+              <option value="Arizona">Arizona</option>
+              <option value="Arkansas">Arkansas</option>
+              <option value="California">California</option>
+              <option value="Colorado">Colorado</option>
+              <option value="Connecticut">Connecticut</option>
+              <option value="Delaware">Delaware</option>
+              <option value="Florida">Florida</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Hawaii">Hawaii</option>
+              <option value="Idaho">Idaho</option>
+              <option value="Illinois">Illinois</option>
+              <option value="Indiana">Indiana</option>
+              <option value="Iowa">Iowa</option>
+              <option value="Kansas">Kansas</option>
+              <option value="Kentucky">Kentucky</option>
+              <option value="Louisiana">Louisiana</option>
+              <option value="Maine">Maine</option>
+              <option value="Maryland">Maryland</option>
+              <option value="Massachusetts">Massachusetts</option>
+              <option value="Michigan">Michigan</option>
+              <option value="Minnesota">Minnesota</option>
+              <option value="Mississippi">Mississippi</option>
+              <option value="Missouri">Missouri</option>
+              <option value="Montana">Montana</option>
+              <option value="Nebraska">Nebraska</option>
+              <option value="Nevada">Nevada</option>
+              <option value="New Hampshire">New Hampshire</option>
+              <option value="New Jersey">New Jersey</option>
+              <option value="New Mexico">New Mexico</option>
+              <option value="New York">New York</option>
+              <option value="North Carolina">North Carolina</option>
+              <option value="North Dakota">North Dakota</option>
+              <option value="Ohio">Ohio</option>
+              <option value="Oklahoma">Oklahoma</option>
+              <option value="Oregon">Oregon</option>
+              <option value="Pennsylvania">Pennsylvania</option>
+              <option value="Rhode Island">Rhode Island</option>
+              <option value="South Carolina">South Carolina</option>
+              <option value="South Dakota">South Dakota</option>
+              <option value="Tennessee">Tennessee</option>
+              <option value="Texas">Texas</option>
+              <option value="Utah">Utah</option>
+              <option value="Vermont">Vermont</option>
+              <option value="Virginia">Virginia</option>
+              <option value="Washington">Washington</option>
+              <option value="West Virginia">West Virginia</option>
+              <option value="Wisconsin">Wisconsin</option>
+              <option value="Wyoming">Wyoming</option>
+          </select>        
+          </div>
+          <div class="form-field">
+            <label for="edituser-bio">BIO</label>
+            <textarea id="edituser-bio" name="bio" rows="5" cols="33" value="bio" placeholder="Enter bio here..."></textarea>
+          </div>
+          <!-- <div class="form-field">
+            <label for="profile-pic">PROFILE PICTURE</label>
+            <input type="file" id="profile-pic" name="profile-pic" />
+          </div> -->
+          <div class="form-field">
+            <label for="profile-pic">PROFILE PICTURE</label>
+            <input type="file" id="profile-pic" name="profile-pic" class="custom-file-input" />
+            <label for="profile-pic" class="file-input-label">CHOOSE FILE</label>
+            <div class="file-name-display">No file chosen</div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>CONTACT INFORMATION</h2>
+
+          <div class="form-field">
+            <label for="edituser-email">EMAIL</label>
+            <input type="email" id="edituser-email" name="email" placeholder="Enter your email here..."  />
+          </div>
+
+          <div class="form-field">
+            <label for="edituser-phone-number">PHONE NUMBER</label>
+            <input type="tel" id="edituser-phone-number" name="phone-number" placeholder="Enter your phone number..."  />
+          </div>
+
+          <div class="form-field">
+            <label for="edituser-password">PASSWORD</label>
+            <input type="password" id="edituser-password" name="password" placeholder="Enter your password here..."  />
+          </div>
+
+          <section class="preferences-container">
+            <div class="form-field" id="profile-preference-stats">
+              <h2 class="preferences-title">Preferences</h2>
+              <div class="preferences-survey">
+                
+                <fieldset class="preference-category">
+                  <legend>EVENTS</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Music" type="button">LIVE<br>MUSIC</button>
+                    <button class="preference-option" data-value="Food" type="button">FOOD<br>MARKETS</button>
+                    <button class="preference-option" data-value="Art" type="button">ART<br>MARKETS</button>
+                    <button class="preference-option" data-value="Festivals" type="button">FESTIVALS</button>
+                    <button class="preference-option" data-value="Sports" type="button">SPORTING<br>EVENTS</button>
+                    <button class="preference-option" data-value="Other" type="button">OTHER</button>
+                  </div>
+                </fieldset>
+                
+                <fieldset class="preference-category">
+                  <legend>MUSIC</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Rock" type="button">ROCK</button>
+                    <button class="preference-option" data-value="Pop" type="button">POP</button>
+                    <button class="preference-option" data-value="Hip-Hop" type="button">HIP-HOP</button>
+                    <button class="preference-option" data-value="Jazz" type="button">JAZZ</button>
+                    <button class="preference-option" data-value="Classical" type="button">CLASSICAL</button>
+                    <button class="preference-option" data-value="Electronic" type="button">ELECTRONIC</button>
+                    <button class="preference-option" data-value="Country"type="button">COUNTRY</button>
+                    <button class="preference-option" data-value="Other"type="button">OTHER</button>
+                  </div>
+                </fieldset>
+                
+                <fieldset class="preference-category">
+                  <legend>FOOD</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Pizza" type="button">PIZZA</button>
+                    <button class="preference-option" data-value="Burgers" type="button">BURGERS</button>
+                    <button class="preference-option" data-value="Sushi" type="button">SUSHI</button>
+                    <button class="preference-option" data-value="Tacos" type="button">TACOS</button>
+                    <button class="preference-option" data-value="Salads" type="button">SALADS</button>
+                    <button class="preference-option" data-value="Pasta" type="button">PASTA</button>
+                    <button class="preference-option" data-value="Desserts" type="button">DESSERTS</button>
+                    <button class="preference-option" data-value="Vegan" type="button">VEGAN</button>
+                  </div>
+                </fieldset>
+                
+                <fieldset class="preference-category">
+                  <legend>CUISINE</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Italian" type="button">ITALIAN</button>
+                    <button class="preference-option" data-value="Mexican" type="button">MEXICAN</button>
+                    <button class="preference-option" data-value="Chinese" type="button">CHINESE</button>
+                    <button class="preference-option" data-value="Indian" type="button">INDIAN</button>
+                    <button class="preference-option" data-value="Japanese" type="button">JAPANESE</button>
+                    <button class="preference-option" data-value="Thai" type="button">THAI</button>
+                    <button class="preference-option" data-value="Greek" type="button">GREEK</button>
+                    <button class="preference-option" data-value="American" type="button">AMERICAN</button>
+                  </div>
+                </fieldset>
+                
+                <fieldset class="preference-category">
+                  <legend>ART</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Painting" type="button">PAINTING</button>
+                    <button class="preference-option" data-value="Sculpture" type="button">SCULPTURE</button>
+                    <button class="preference-option" data-value="Photography" type="button">PHOTO-<br>GRAPHY</button>
+                    <button class="preference-option" data-value="Graffiti" type="button">GRAFFITI</button>
+                    <button class="preference-option" data-value="Dance" type="button">DANCE</button>
+                    <button class="preference-option" data-value="Theater" type="button">THEATER</button>
+                    <button class="preference-option" data-value="Literature" type="button">LITERATURE</button>
+                    <button class="preference-option" data-value="Film" type="button">FILM</button>
+                  </div>
+                </fieldset>
+                
+                <fieldset class="preference-category">
+                  <legend>ART STYLE</legend>
+                  <div class="preference-options">
+                    <button class="preference-option" data-value="Abstract" type="button">ABSTRACT</button>
+                    <button class="preference-option" data-value="Realism" type="button">REALISM</button>
+                    <button class="preference-option" data-value="Impressionism" type="button">IMPRESSION-<br>ISM</button>
+                    <button class="preference-option" data-value="Cubism" type="button">CUBISM</button>
+                    <button class="preference-option" data-value="Surrealism" type="button">SURREALISM</button>
+                    <button class="preference-option" data-value="Pop Art" type="button">POP ART</button>
+                    <button class="preference-option" data-value="Street Art" type="button">STREET ART</button>
+                    <button class="preference-option" data-value="Minimalism" type="button">MINIMALISM</button>
+                  </div>
+                </fieldset>
+                
+              </div>
+            </div>
+          </section>
+
+          <div class="form-actions">
+            <button type="submit" class="save-btn">SAVE CHANGES</button>
+            <button type="button" class="cancel-btn">CANCEL</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/user/editprofile.js"></script>
+  </body>
+</html>

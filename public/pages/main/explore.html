@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Explore</title>
+    <link rel="stylesheet" href="../../css/main_style/explore.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="../../index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="explore.html" class="active">EXPLORE</a></li>
+          <li><a href="saved_events.html">EVENTS</a></li>
+          <li><a href="profile.html" class="profile-btn">PROFILE</a></li>
+          <li><a href="../../index.html" class="logout-btn" id="logoutButton">LOGOUT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Header for Explore Page -->
+    <h1 class="explore-header">Explore Page</h1>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="Search for events..."
+      />
+      <button class="search-btn">Search</button>
+    </div>
+
+    <section class="filter-container">
+      <!-- Live Music -->
+      <a href="../events/livemusic.html" class="filter-link">
+        <div class="filter-item">
+          <img
+            src="../../images/musiclogo.png"
+            alt="Live Music"
+            class="filter-icon"
+          />
+          <span>Live Music</span>
+        </div>
+      </a>
+
+      <!-- Food Market -->
+      <a href="../events/foodmarkets.html" class="filter-link">
+        <div class="filter-item">
+          <img
+            src="../../images/foodicon.png"
+            alt="Food Market"
+            class="filter-icon"
+          />
+          <span>Food Market</span>
+        </div>
+      </a>
+
+      <!-- Art Markets -->
+      <a href="../events/artmarkets.html" class="filter-link">
+        <div class="filter-item">
+          <img src="../../images/articon.png" alt="Art Market" class="filter-icon" />
+          <span>Art Market</span>
+        </div>
+      </a>
+
+      <!-- Festivals -->
+      <a href="../events/festivals.html" class="filter-link">
+        <div class="filter-item">
+          <img
+            src="../../images/festivalicon.png"
+            alt="Festivals"
+            class="filter-icon"
+          />
+          <span>Festivals</span>
+        </div>
+      </a>
+
+      <!-- Sports -->
+      <a href="../events/sporting.html" class="filter-link">
+        <div class="filter-item">
+          <img src="../../images/sporticon.png" alt="Sports" class="filter-icon" />
+          <span>Sports</span>
+        </div>
+      </a>
+
+      <!-- Other -->
+      <a href="../events/other.html" class="filter-link">
+        <div class="filter-item">
+          <img
+            src="../../images/othericon.png"
+            alt="Other Events"
+            class="filter-icon"
+          />
+          <span>Other</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-container" id="events-container">
+      <h3 class="loading-events-header">
+        LOADING EVENTS NEAR YOU...
+      </h3>
+      <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+          <path fill="#000" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+          <animateTransform 
+            attributeName="transform" 
+            attributeType="XML" 
+            type="rotate"
+            dur="1s" 
+            from="0 50 50"
+            to="360 50 50" 
+            repeatCount="indefinite" />
+        </path>
+      </svg>
+<!--  
+      <div class="event-box">
+        <img
+          src="../../images/nessabarrett.png"
+          alt="Live Music Event"
+          class="event-image"
+        />
+        
+        <a href="../events/eventOV.html" class="clickable-text">
+          <p class="event-title">
+            Nessa Barrett - <br />
+            AFTERCARE World Tour
+          </p>
+        </a>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/milkmart.png"
+          alt="Food Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Milk Mart - <br />
+          Orlando, FL
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/eastorlando.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          East Orlando - <br />
+          Farmers Market
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/coldvisions.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Bladee - <br />
+          COLD VISIONS World Tour
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img src="../../images/EDC.png" alt="Art Market Event" class="event-image" />
+        <p class="event-title">
+          EDC - <br />
+          Orlando, FL
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img src="../../images/OMA.png" alt="Art Market Event" class="event-image" />
+        <p class="event-title">
+          Orlando Museum of Art - <br />
+          Relationships Exhbiit
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/filmfestival.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Love Your Shorts - <br />
+          Film Festival
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/windemere.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Windemere, Orlando - <br />
+          Farmer's Market
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/lakenonaart.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Lake Nona - <br />
+          Art Festival
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+
+      <div class="event-box">
+        <img
+          src="../../images/avalonpark.png"
+          alt="Art Market Event"
+          class="event-image"
+        />
+        <p class="event-title">
+          Avalon Park - <br />
+          Fall Craft Fair
+        </p>
+        <button class="heart-btn" onclick="toggleHeart(this)">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div> -->
+    </section>
+
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/main/explore.js"></script>
+    <script src="../../js/auth/logout.js"></script>
+  </body>
+</html>

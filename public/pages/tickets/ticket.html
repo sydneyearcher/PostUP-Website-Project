@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Ticket Purchasing</title>
+    <link rel="stylesheet" href="../../css/tickets/ticket.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Ticket Selection Wrapper -->
+    <div class="ticket-selection-wrapper">
+      <!-- Ticket Selection Content -->
+      <div class="ticket-selection">
+        <h2>LET’S GET YOU THOSE TICKETS!</h2>
+        <br />
+        <h2>
+          Nessa Barrett -
+          <br />
+          Aftercare World Tour
+        </h2>
+        <br />
+        <p>
+          <strong>Friday, November 8, 2025</strong> |
+          <strong>The House of Blues</strong>
+        </p>
+        <br />
+        <form>
+          <!-- Admission Type -->
+          <label for="admission">What Admission?</label>
+          <select id="admission" name="admission">
+            <option value="general">General Admission</option>
+            <option value="vip">VIP</option>
+            <option value="early">Early Access</option>
+          </select>
+
+          <!-- Ticket Quantity -->
+          <label for="ticket-quantity">How Many Tickets?</label>
+          <input
+            type="number"
+            id="ticket-quantity"
+            name="quantity"
+            min="1"
+            max="10"
+            value="1"
+          />
+
+          <!-- Pricing Breakdown -->
+          <div class="price-breakdown">
+            <p><strong>Ticket(s):</strong> $100</p>
+            <p><strong>Service Fees:</strong> $40.95</p>
+            <p><strong>Order Processing:</strong> $10.12</p>
+            <p><strong>Total:</strong> $151.07</p>
+          </div>
+
+          <a href=".././tickets/purchased.html">
+            <button type="button" class="pay-btn"><strong>Pay</strong></button>
+          </a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

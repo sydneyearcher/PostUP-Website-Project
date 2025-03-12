@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Create an Event</title>
+    <link rel="stylesheet" href="../../css/profile_style/create.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="../main/explore.html" class="explore-btn">EXPLORE</a></li>
+          <li><a href="../main/saved_events.html">EVENTS</a></li>
+          <li><a href="../main/profile.html" class="active">PROFILE</a></li>
+          <li><a href="../main/index.html" class="logout-btn">LOGOUT</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <br>
+    <br>
+    <header class="event-header">
+        <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+        <div class="event-title">
+            <h2>CREATING AN EVENT?</h2>
+            <p>FILL OUT THIS FORM BELOW TO CREATE AN EVENT<br>FOR OTHERS TO ATTEND!</p>
+        </div>
+        <button class="menu-btn"><i class="fas fa-ellipsis-v"></i></button>
+    </header>
+    
+    <br>
+
+   <!-- Event Title (Updated for Consistency) -->
+<div class="form-group">
+    <label for="event-title">EVENT TITLE</label>
+    <div class="input-box">
+        <input type="text" id="event-title" placeholder="Enter event title here...">
+    </div>
+</div>
+    
+<!-- Date & Time Selection (Editable) -->
+<div class="date-time-container">
+    <div class="input-group">
+        <label for="event-date">DATE</label>
+        <div class="input-box">
+            <input type="date" id="event-date" value="2025-11-09">
+            <i class="fas fa-calendar-alt"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <label for="event-time">TIME</label>
+        <div class="input-box">
+            <input type="time" id="event-time" value="19:00">
+            <i class="fas fa-clock"></i>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<!-- Location Input (Editable) -->
+<div class="form-group">
+    <label for="event-location">LOCATION</label>
+    <div class="input-box">
+        <input type="text" id="event-location" placeholder="Enter event location here..." value="Enter event location...">
+        <i class="fas fa-map-marker-alt"></i>
+    </div>
+</div>
+
+<br>
+<br>
+<!-- Additional Information (Text Area) -->
+<div class="form-group">
+    <label for="event-description">ADDITIONAL INFORMATION</label>
+    <div class="input-box textarea-box">
+        <textarea id="event-description" placeholder="Enter details about your event..."></textarea>
+    </div>
+</div>
+
+<br>
+<br>
+<!-- Invite People Section -->
+<div class="form-group">
+    <label>INVITE PEOPLE</label>
+    <div class="invite-section">
+        <div class="circle">
+            <img src="../../images/plussign.png" alt="User 1">
+        </div>
+        <div class="circle">
+            <img src="../../images/plussign.png" alt="User 2">
+        </div>
+        <div class="circle">
+            <img src="../../images/plussign.png" alt="User 3">
+        </div>
+        <div class="circle">
+            <img src="../../images/plussign.png" alt="User 3">
+        </div>
+</div>
+
+<br>
+<!-- Create Event Button -->
+<a href="../main/profile.html" class="create-event-btn">Create Event</a>
+
+
+<br>
+<br>
+<script src="../../js/scripts.js"></script>
+</body>
+</html>

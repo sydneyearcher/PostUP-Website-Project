@@ -1,0 +1,236 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    background-color: #ECE4D6;
+    color: #333;
+    min-height: 120vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto; /* Allow vertical scrolling */
+    transition: background-color 0.5s ease;
+}
+
+/* Loading Screen */
+#loadingScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECE4D6;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+#loadingScreen img {
+    max-width: 800px; /* Larger logo size on loading screen */
+}
+
+/* Main Content Section (Second Page) */
+#mainContentSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    opacity: 0; /* Start with invisible content */
+    transition: opacity 1s ease-in-out;
+}
+
+/* Logo Styling (for second page) */
+.login-logo {
+    max-width: 250px; /* Larger logo size on second page */
+    margin-bottom: 10px; /* Reduced space between logo and text */
+}
+
+/* Header Styling */
+h1 {
+    font-family: 'Anton', sans-serif;
+    font-weight: bold; /* Bold text */
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: black;
+    text-align: center; /* Ensure it's centered */
+    white-space: nowrap; /* Prevent the text from wrapping to the next line */
+    overflow: hidden; /* Hide overflowed content */
+    text-overflow: ellipsis; /* Show "..." if text overflows */
+}
+
+h1 span {
+    display: block;
+    text-transform: uppercase; /* Capitalize each word */
+    line-height: 1.2; /* Adjust line height for better spacing */
+}
+
+/* Specific Font Styling for Each Word */
+.whats-the {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100; /* Thin style */
+    letter-spacing: 2px; /* Adds space between letters */
+    line-height: 1.2; /* Increase line height for vertical spacing */
+    transform: scaleY(1.2); /* Elongate the text vertically */
+}
+
+.the {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 100; /* Thin style */
+    line-height: 1.2; /* Increase line height for vertical spacing */
+    transform: scaleY(1.2); /* Elongate the text vertically */
+}
+
+.move {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600; /* Bold style */
+    font-size: 4rem; /* Adjusted size for 'MOVE' */
+}
+
+/* SIGN UP PAGE */
+#signUpPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #ECE4D6;
+    text-align: center;
+    height: 100%; /* Allow for full height */
+    overflow-y: auto; /* Allow content to scroll */
+    position: relative;
+}
+
+#signUpPage .login-logo {
+    max-width: 250px;
+    margin-bottom: 30px; /* Space between logo and form */
+}
+
+#signUpPage h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+}
+
+/* Input Fields */
+.input-field {
+    display: block; /* Ensure input fields are on separate lines */
+    font-family: 'Anton', sans-serif;
+    width: 100%;
+    max-width: 350px; /* Shorter width for input fields */
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 1rem;
+    border: 2.5px solid #000;
+    border-radius: 20px;
+    background-color: #f7f7f7;
+    color: #1a1a1a;
+    /*text-transform: uppercase;  Capitalize text inside inputs */
+    max-height: 50px; /* Limit height to prevent excessive field size */
+}
+
+/* Buttons */
+.btn {
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: 2.5px solid #000;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #fdbd5e;
+    color: black;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase; /* Capitalize button text */
+}
+
+.btn:hover {
+    background-color: rgb(255, 184, 77);
+}
+
+.btn:active {
+    background-color: rgb(255, 184, 77);
+}
+
+/* Form Container Centering */
+#signUpForm, #loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: #ECE4D6;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 100%; /* Allow full height */
+}
+
+/* Space Between Input Fields */
+#signUpForm .input-field {
+    margin-bottom: 20px; /* Increased space between input fields */
+}
+
+/* Buttons */
+#signUpPage .btn {
+    width: 100%;
+    max-width: 300px;
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: 2.5px solid #000;
+    border-radius: 20px;
+    background-color: #fdbd5e;
+    color: black;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Space between buttons */
+a.btn, a.back-to-login, button.btn {
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: 2.5px solid #000000; /* Black border */
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #fdbd5e;
+    color: black;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase;
+}
+
+/* Space between buttons */
+a.back-to-login {
+    margin-top: 20px; /* Increased margin-top for spacing */
+}
+
+a.btn:hover, a.back-to-login:hover, button.btn:hover {
+    transform: scale(1.05);
+}
+
+a.btn:active, a.back-to-login:active, button.btn:active {
+    background-color: rgb(255, 184, 77);
+}
+

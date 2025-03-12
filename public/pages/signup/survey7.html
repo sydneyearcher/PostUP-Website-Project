@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Survey</title>
+    <link rel="stylesheet" href="../../css/signup_style/survey7.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="../main/index.html"><img src="../../images/PostUp LOGO.png" alt="PostUP Logo" /></a>
+    </div>
+
+    <form class="survey-form">
+      <!-- Survey Box with Border -->
+      <div class="survey-box">
+        <!-- How Often Question -->
+        <label class="survey-question-title">
+          HOW OFTEN WOULD YOU LIKE TO ATTEND EVENTS?
+        </label>
+        <input type="range" id="how-often" name="how-often" min="0" max="10" step="1" value="5" class="slider">
+        <p id="how-often-text">Frequency: Once a Month</p>
+        
+              <!-- How Far Question -->
+        <label class="survey-question-title">
+          HOW FAR ARE YOU WILLING TO TRAVEL FOR THESE EVENTS?
+        </label>
+        <input type="range" id="how-far" name="how-far" min="0" max="62" step="1" value="31" class="slider">
+        <p id="how-far-text">Distance: 31 miles</p>
+          
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <!-- Button to move to next page -->
+          <a href="../main/profile.html">
+            <button type="submit" class="submit-btn" data-href="../main/profile.html">SUBMIT</button>
+          </a>
+
+          <!-- Button to go back to the previous page -->
+          <a href="survey6.html">
+            <button type="button" class="back-btn">BACK</button>
+          </a>
+        </div>
+      </div>
+    </form>
+
+    <script src="../../js/scripts.js"></script>
+  </body>
+</html>
