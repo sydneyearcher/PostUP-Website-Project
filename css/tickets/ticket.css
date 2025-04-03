@@ -19,6 +19,15 @@ body {
     padding-top: 80px;
 }
 
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 /* Logo Positioned Outside Navbar */
 .nav-logo {
     position: absolute;
@@ -37,13 +46,48 @@ body {
     border-radius: 20px;
     border: 3px solid #000000;  /* Black border around the ticket purchasing section */
     margin: 30px auto;  /* Center the section and add space around it */
-    max-width: 800px;  /* Limit the width for cleaner look */
+    width: 100%;
+    max-width: 600px;  /* Limit the width for cleaner look */
 }
 
 /* Ticket Selection Section */
 .ticket-selection {
     padding: 20px;
 }
+
+.ticket-header {
+    color: #000000;
+    display: flex;
+    text-transform: uppercase;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    justify-content: center; /* Centers the heading div */
+    padding: 20px 40px;
+}
+
+#back-explore-btn {
+    position: absolute;
+    top: 0;
+    left: 0; /* Move to the top-right corner */
+    font-size: 0.75rem;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-btn-icon {
+    width: 24px;
+    height: 24px;
+    fill: #333; /* Default color */
+    transition: fill 0.3s ease-in-out;
+}
+
 
 /* Ticket Type Dropdown */
 .ticket-selection select {
@@ -61,17 +105,20 @@ body {
 }
 
 /* Number of Tickets Input */
-.ticket-selection input[type="number"] {
+.ticket-selection input[type="number"], input[type="text"] {
     font-family: 'Oswald', sans-serif;
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     font-size: 1rem;
-    border: 2px solid #000000;
     border-radius: 20px;
     background-color: #ECE4D6;
     color: #1a1a1a;
-    text-transform: uppercase;
+    border: 2px solid #000;
+}
+
+.ticket-selection input[type="text"] {
+    border: 2px solid #000000;
 }
 
 .ticket-selection input[type="number"]:focus {
@@ -104,4 +151,128 @@ body {
 
 .ticket-selection .pay-btn:active {
     background-color: #fdbd5e;
+}
+
+.page-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.event-details {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.event-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.event-info {
+    color: #666;
+}
+
+fieldset{
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    gap: 0.5rem;
+}
+
+.quantity-btn {
+    background-color: #fdbd5e;
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.quantity-btn:hover {
+    transform: scale(1.1);
+}
+
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    padding: 10px 0;
+}
+
+select, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    background-color: #ECE4D6;
+}
+
+.price-breakdown {
+    background-color: #E6DCD0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.price-breakdown p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.total {
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #fdbd5e;
+    border: 3px solid #000;
+    border-radius: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.pay-btn:hover {
+    transform: scale(1.05);
+    background-color: #ffd090;
 }

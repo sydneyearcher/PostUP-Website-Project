@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
   <body>
     <!-- Logo Positioned Outside Navbar -->
@@ -18,43 +19,47 @@
       /></a>
     </div>
 
-    <div class="ticket-confirmation">
-      <h1>YOU GOT YOUR TICKET!</h1>
-      <br />
-      <h2>
-        Nessa Barrett -
+    <main>    
+      <div class="ticket-confirmation">
+        <h1>YOU GOT YOUR TICKET!</h1>
         <br />
-        Aftercare World Tour
-      </h2>
-      <br />
-      <img
-        src="../../images/nessabarrett.png"
-        alt="Ticket Image"
-        class="ticket-image"
-      />
-      <br />
+        <h2 id="event-title">
+          Nessa Barrett - Aftercare World Tour
+        </h2>
+        <br />
+        <img
+          src="../../images/nessabarrett.png"
+          alt="Ticket Image"
+          class="ticket-image"
+        />
+        <br />
 
-      <p><strong>Location:</strong> The House of Blues</p>
-      <p><strong>Name:</strong> John Smith</p>
-      <p><strong>Date:</strong> Friday, November 8, 2025</p>
+        <p><strong>Location:</strong> <span id="event-location">The House of Blues</span></p>
+        <p><strong >Name:</strong> <span id="username">John Smith</span></p>
+        <p><strong>Date:</strong> <span id="event-date">Friday, November 8, 2025</span></p>
 
-      <br />
+        <br />
 
-      <!-- Ticket Barcode -->
-      <div class="ticket-barcode">
-        <img src="../../images/barcode.png" alt="Ticket Barcode" />
+        <!-- Ticket Barcode -->
+        <div class="ticket-barcode">
+          <img src="../../images/barcode.png" alt="Ticket Barcode" />
+        </div>
+
+        <br />
+        <!-- Add to Wallet Button -->
+        <div class="wallet-btn-container">
+          <button
+            class="add-to-wallet-btn"
+            onclick="window.location.href='../main/explore.html';"
+          >
+            <strong>Add to Wallet</strong>
+          </button>
+        </div>
       </div>
-
-      <br />
-      <!-- Add to Wallet Button -->
-      <div class="wallet-btn-container">
-        <button
-          class="add-to-wallet-btn"
-          onclick="window.location.href='../main/explore.html';"
-        >
-          <strong>Add to Wallet</strong>
-        </button>
-      </div>
-    </div>
+    </main>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/util/loadEvent.js"></script>
+    <script src="../../js/features/purchased.js"></script>
   </body>
 </html>

@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
   <body>
     <!-- Logo Positioned Outside Navbar -->
@@ -18,56 +19,82 @@
       /></a>
     </div>
 
+    <main>
     <!-- Ticket Selection Wrapper -->
     <div class="ticket-selection-wrapper">
       <!-- Ticket Selection Content -->
       <div class="ticket-selection">
-        <h2>LET’S GET YOU THOSE TICKETS!</h2>
-        <br />
-        <h2>
-          Nessa Barrett -
-          <br />
-          Aftercare World Tour
-        </h2>
-        <br />
-        <p>
-          <strong>Friday, November 8, 2025</strong> |
-          <strong>The House of Blues</strong>
-        </p>
-        <br />
-        <form>
-          <!-- Admission Type -->
-          <label for="admission">What Admission?</label>
-          <select id="admission" name="admission">
-            <option value="general">General Admission</option>
-            <option value="vip">VIP</option>
-            <option value="early">Early Access</option>
-          </select>
-
-          <!-- Ticket Quantity -->
-          <label for="ticket-quantity">How Many Tickets?</label>
-          <input
-            type="number"
-            id="ticket-quantity"
-            name="quantity"
-            min="1"
-            max="10"
-            value="1"
-          />
-
-          <!-- Pricing Breakdown -->
-          <div class="price-breakdown">
-            <p><strong>Ticket(s):</strong> $100</p>
-            <p><strong>Service Fees:</strong> $40.95</p>
-            <p><strong>Order Processing:</strong> $10.12</p>
-            <p><strong>Total:</strong> $151.07</p>
-          </div>
-
-          <a href=".././tickets/purchased.html">
-            <button type="button" class="pay-btn"><strong>Pay</strong></button>
+        <div class="ticket-header">
+          <a href="../events/eventOV.html" class="back-btn" id="back-explore-btn">
+            <svg class="back-btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Event Overview
           </a>
+          <h2 class="page-title">LET’S GET YOU THOSE TICKETS!</h2>
+        </div>
+        
+        <br />
+
+        <div class="event-details">
+          <h3 class="event-name" id="event-title">Nessa Barrett - Aftercare World Tour</h3>
+          <!-- <p class="event-info"><strong><span id="event-date">Friday, November 8, 2025</span> | <span id="event-location">The House of Blues </span></strong></p> -->
+          <p>
+            <strong id="event-date">Friday, November 14, 2025</strong> |
+            <strong id="event-location">520 Main St, Windermere, FL 34786</strong>
+          </p>
+        </div>
+
+        <form>
+          <fieldset class="form-group">
+            <label for="admission" class="form-label">What Admission?</label>
+            <select id="admission" name="admission">
+              <option value="general">General Admission</option>
+              <option value="vip">VIP</option>
+              <option value="early">Early Access</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="ticket-quantity" class="form-label">How Many Tickets?</label>
+            <div class="input-wrapper">
+              <div class="quantity-control">
+                <button type="button" class="quantity-btn" id="decrease">-</button>
+                <input type="number" id="ticket-quantity" name="quantity" value="1" min="1" max="10" class="quantity-input">
+                <button type="button" class="quantity-btn" id="increase">+</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label for="ticket-holdername" class="form-label">For Who?</label>
+            <input type="text" id="ticket-holdername" name="name" placeholder="Enter the name of your ticket holder">
+          </fieldset>
+
+          <fieldset class="price-breakdown">
+            <p><span>Ticket(s):</span> <span id="ticket-price">$100</span></p>
+            <p><span>Service Fees:</span> <span id="service-fee-price">$40.95</span></p>
+            <p><span>Order Processing:</span> <span id="processing-fee-price">$10.12</span></p>
+            <p class="total"><span>Total:</span> <span id="total-ticket-price">$151.07</span></p>
+          </fieldset>
+
+          <!-- <a href="../tickets/purchased.html" ></a> -->
+          <button 
+            type="submit" 
+            class="pay-btn" 
+            
+            >
+          Pay
+          </button>
         </form>
       </div>
-    </div>
+      
+    </div> 
+    </main>
+      <script src="../../js/supabase.js"></script>
+      <script src="../../js/util/checkUser.js"></script>
+      <script src="../../js/util/getProfile.js"></script>
+      <script src="../../js/util/loadEvent.js"></script>
+      <script src="../../js/features/ticket.js"></script>
   </body>
 </html>

@@ -13,12 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.innerHTML = '<h1>Error: Could not connect to Supabase</h1><p>Please check your console for more details.</p>';
         return;
     }
-  
-    // fetchuserData()
-
     // Check if user is logged in
     // checkUser();
-  
+
     fetcheventData()
 
     // Add event listeners for search functionality
@@ -34,21 +31,54 @@ document.addEventListener('DOMContentLoaded', () => {
 const fetcheventData = async () => {
     await checkUser();
     console.log('Fetching events data...');
-    const {data, error} = await supabase
-        .from('events')
-        .select(``)
-        .order('datetime', { ascending: true });
+    // const {data, error} = await supabase
+    //     .from('events')
+    //     .select(``)
+    //     .order('datetime', { ascending: true });
 
-      if(error){
-        console.log('Could not fetch the data')
-        console.log(error)
+    //   if(error){
+    //     console.log('Could not fetch the data')
+    //     console.log(error)
+    //   }
+    //   if(data){
+    //     console.log('Data fetched successfully')
+    //     allEvents = data; // Store fetched posts globally
+    //     loadEvents(allEvents); // Load all posts initially
+    //     await applyFavoriteStates(); // Add this line
+    // }
+
+    try {
+        const cachedData = await getCachedEvents();
+        if (cachedData) {
+          console.log('Using cached events');
+          allEvents = cachedData;
+          loadEvents(allEvents);
+          await applyFavoriteStates();
+        }
+      } catch (error) {
+        console.log('Cache read error:', error);
       }
-      if(data){
-        console.log('Data fetched successfully')
-        allEvents = data; // Store fetched posts globally
-        loadEvents(allEvents); // Load all posts initially
-        await applyFavoriteStates(); // Add this line
-    }
+    
+      // Always fetch fresh data (stale-while-revalidate pattern)
+      try {
+        console.log('Fetching fresh events...');
+        const { data, error } = await supabase
+          .from('events')
+          .select(``)
+          .order('datetime', { ascending: true });
+    
+        if (data) {
+          console.log('Fresh data received');
+          allEvents = data;
+          loadEvents(allEvents);
+          await applyFavoriteStates();
+          
+          // Update cache in background
+          await cacheEvents(data);
+        }
+      } catch (error) {
+        console.log('Fetch error:', error);
+      }
 }
 
 let selectedCategory = null; // Track selected category
@@ -106,6 +136,74 @@ function handleSearch() {
     applyFilters();
 }
 
+// IndexedDB setup
+const openDB = () => {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open('eventsDB', 1);
+  
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains('events')) {
+          db.createObjectStore('events', { keyPath: 'id' });
+        }
+      };
+  
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  };
+  
+  // Cache events data
+  const cacheEvents = async (events) => {
+    try {
+      const db = await openDB();
+      const tx = db.transaction('events', 'readwrite');
+      const store = tx.objectStore('events');
+      
+      // Clear old entries
+      store.clear();
+      
+      // Add new entries with timestamp
+      events.forEach(event => {
+        store.put({ ...event, cachedAt: Date.now() });
+      });
+  
+      return new Promise((resolve, reject) => {
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    } catch (error) {
+      console.error('Cache write error:', error);
+    }
+  };
+  
+  // Get cached events
+  const getCachedEvents = async () => {
+    try {
+      const db = await openDB();
+      const tx = db.transaction('events', 'readonly');
+      const store = tx.objectStore('events');
+      
+      const request = store.getAll();
+      
+      return new Promise((resolve, reject) => {
+        request.onsuccess = () => {
+          const result = request.result;
+          // Validate cache freshness (1 hour max age)
+          if (result.length > 0 && Date.now() - result[0].cachedAt < 3600000) {
+            resolve(result);
+          } else {
+            resolve(null);
+          }
+        };
+        request.onerror = () => reject(request.error);
+      });
+    } catch (error) {
+      console.error('Cache read error:', error);
+      return null;
+    }
+  };
+
 async function loadEvents(events) {
     const eventsContainer = document.getElementById('events-container');
     //console.log("whet are posts ", posts);
@@ -129,7 +227,7 @@ async function loadEvents(events) {
                     class="event-image"
                     >` : ''}   
                 </div>
-                <a href="../events/eventOV.html" class="clickable-text">
+                <a href="../events/eventOV.html?id=${event.id}" class="clickable-text">
                     <h3 class="event-title">${event.title}</h3>
                     <p>${new Date(event.datetime).toLocaleDateString()} </p>
                     <p>${event.location}</p>
@@ -142,7 +240,7 @@ async function loadEvents(events) {
                     <i class="far fa-comment" title="Comment"></i>
                     <i class="fas fa-share" title="Share"></i>
                 </div>
-        </div>`;
+            </div>`;
 
             // Insert HTML for each post
             eventsContainer.insertAdjacentHTML('beforeend', html_to_insert);
@@ -154,7 +252,7 @@ async function loadEvents(events) {
 async function fetchuserData () {
     let loggedInUser= await checkUser();
     
-    console.log('Fetching data of...', loggedInUser.user.id);
+    // console.log('Fetching data of...', loggedInUser.user.id);
     
     const {data, error} = await supabase
       .from('profiles')
