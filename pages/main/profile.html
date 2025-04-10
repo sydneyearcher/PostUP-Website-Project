@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PostUP - Explore</title>
+    <link rel="stylesheet" href="../../css/global/navbar.css" />
     <link rel="stylesheet" href="../../css/main_style/profile.css" />
+    <link rel="stylesheet" href="../../css/global/globals.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
@@ -24,101 +26,103 @@
     </div>
 
     <!-- Navigation Bar -->
-    <div class="navbar-container">
+    <header class="navbar-container">
       <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="explore.html">EXPLORE</a></li>
-          <li><a href="saved_events.html">EVENTS</a></li>
-          <li><a href="profile.html" class="active">PROFILE</a></li>
-          <li><a href="../../index.html" class="logout-btn">LOGOUT</a></li>
+          <li><a href="explore.html" class="explore-nav-link"><i class="fas fa-compass"></i> EXPLORE</a></li>
+          <li><a href="saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
+          <li><a href="profile.html" class="profile-nav-link active"><i class="fas fa-user"></i> PROFILE</a></li>
+          <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li>
         </ul>
       </nav>
-    </div>
+    </header>
 
-    <section class="profile-info" id="profile-info">
-      <!-- <div class="profile-picture">
-        <img src="../../images/profileicon.png" alt="Profile Picture" />
-      </div>
-      <h3 class="profile-name">
-        John Smith <i class="fas fa-check-circle"></i>
-      </h3>
-      <p class="profile-location">ORLANDO, FLORIDA</p> -->
-      <h3 class="profile-name">
-        Loading Profile Information...
-      </h3>
-      <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-          <path fill="#000" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
-          <animateTransform 
-            attributeName="transform" 
-            attributeType="XML" 
-            type="rotate"
-            dur="1s" 
-            from="0 50 50"
-            to="360 50 50" 
-            repeatCount="indefinite" />
-        </path>
-      </svg>
-      <div class="profile-buttons">
-        <a href="../profile/editprofile.html" class="profile-btn">EDIT PROFILE</a>
-        <a href="../profile/create.html" class="profile-btn">CREATE EVENT</a>
-      </div>
-    </section>
-
-    <section class="profile-stats" id="profile-preference-stats">
-      <div class="stat-box">
-        <h4>PREFERENCES</h4>
-        <ul> STATS
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </section>
-
-
-    <section class="profile-stats">
-      <div class="stat-box">
-        <h4>1,250</h4>
-        <p>EVENTS</p>
-      </div>
-
-      <div class="stat-box">
-        <h4>250</h4>
-        <p>EXPERIENCES</p>
-      </div>
-
-      <div class="stat-box">
-        <h4>150</h4>
-        <p>FOLLOWERS</p>
-      </div>
-
-    </section>
-
-    <section class="events-section">
-      <h3>UPCOMING EVENTS</h3>
-      <br />
-      <div class="upcoming-events">
-        <div class="event-card">
-          <img src="../../images/nessabarrett.png" alt="Nessa Barrett Concert" />
-          <div class="event-details">
-            <h4>NESSA BARRETT</h4>
-            <p>November 8, 2025</p>
+    <main>
+      <section class="profile-info" id="profile-info">
+        <!-- <div class="profile-picture">
+          <img src="../../images/profileicon.png" alt="Profile Picture" />
+        </div>
+        <h3 class="profile-name">
+          John Smith <i class="fas fa-check-circle"></i>
+        </h3>
+        <p class="profile-location">ORLANDO, FLORIDA</p> -->
+        <h3 class="profile-name">
+          Loading Profile Information...
+        </h3>
+        <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <path fill="#000" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+            <animateTransform 
+              attributeName="transform" 
+              attributeType="XML" 
+              type="rotate"
+              dur="1s" 
+              from="0 50 50"
+              to="360 50 50" 
+              repeatCount="indefinite" />
+          </path>
+        </svg>
+        <div class="profile-buttons">
+          <a href="../profile/editprofile.html" class="profile-btn">EDIT PROFILE</a>
+          <a href="../profile/create.html" class="profile-btn">CREATE EVENT</a>
+        </div>
+      </section>
+  
+      <!-- <section class="profile-stats" id="profile-preference-stats">
+        <div class="stat-box">
+          <h4>PREFERENCES</h4>
+          <ul> STATS
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </section> -->
+  
+  
+      <section class="profile-stats">
+        <div class="stat-box">
+          <h4>1,250</h4>
+          <p>EVENTS</p>
+        </div>
+  
+        <div class="stat-box">
+          <h4>250</h4>
+          <p>EXPERIENCES</p>
+        </div>
+  
+        <div class="stat-box">
+          <h4>150</h4>
+          <p>FOLLOWERS</p>
+        </div>
+  
+      </section>
+  
+      <section class="events-section">
+        <h3>UPCOMING EVENTS</h3>
+        <br />
+        <div class="upcoming-events">
+          <div class="event-card">
+            <img src="../../images/nessabarrett.png" alt="Nessa Barrett Concert" />
+            <div class="event-details">
+              <h4>NESSA BARRETT</h4>
+              <p>November 8, 2025</p>
+            </div>
+          </div>
+          <div class="event-card">
+            <img src="../../images/coldvisions.png" alt="Bladee Concert" />
+            <div class="event-details">
+              <h4>BLADEE</h4>
+              <p>November 18, 2025</p>
+            </div>
           </div>
         </div>
-        <div class="event-card">
-          <img src="../../images/coldvisions.png" alt="Bladee Concert" />
-          <div class="event-details">
-            <h4>BLADEE</h4>
-            <p>November 18, 2025</p>
-          </div>
-        </div>
-      </div>
-      <br />
-      <br />
-      <button class="view-tickets-btn">VIEW ACTIVE TICKETS</button>
-    </section> 
+        <br />
+        <br />
+        <button class="view-tickets-btn">VIEW ACTIVE TICKETS</button>
+      </section> 
+    </main>
 
     <script src="../../js/supabase.js"></script>
     <script src="../../js/util/checkUser.js"></script>

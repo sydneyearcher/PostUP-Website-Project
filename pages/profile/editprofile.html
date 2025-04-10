@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PostUP - Edit Profile</title>
+    <link rel="stylesheet" href="../../css/global/navbar.css" />
     <link rel="stylesheet" href="../../css/profile_style/editprofile.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
@@ -20,16 +25,16 @@
     </div>
 
     <!-- Navigation Bar -->
-    <div class="navbar-container">
+    <header class="navbar-container">
       <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="../main/explore.html" class="explore-btn">EXPLORE</a></li>
-          <li><a href="../main/saved_events.html">EVENTS</a></li>
-          <li><a href="../main/profile.html" class="active">PROFILE</a></li>
-          <li><a href="../main/index.html" class="logout-btn">LOGOUT</a></li>
+          <li><a href="../main/explore.html" class="explore-nav-link"><i class="fas fa-compass"></i> EXPLORE</a></li>
+          <li><a href="../main/saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
+          <li><a href="../main/profile.html" class="profile-nav-link active"><i class="fas fa-user"></i> PROFILE</a></li>
+          <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li>
         </ul>
       </nav>
-    </div>
+    </header>
 
     <!-- Header for Edit Profile-->
     <h1 class="explore-header">EDIT PROFILE</h1>

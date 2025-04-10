@@ -80,7 +80,7 @@ async function handleSubmit(eventId, e) {
     status: 'purchased'
   };
   
-  console.log(ticket);
+  // console.log(ticket);
   
   let submittedTicket = await submitTicket(ticket);
   const ticketId = submittedTicket.ticket_id;
@@ -139,7 +139,7 @@ async function submitAttendedEvent (attendedEvent) {
     console.error('Error creating attended event:', error);
   }
   else {
-    console.log('Attended event successfuly created:', data[0]);
+    console.log('Attended event successfuly created:', data);
   }
 }
 

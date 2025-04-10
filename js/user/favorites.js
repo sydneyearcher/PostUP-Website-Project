@@ -1,5 +1,7 @@
 // favorites.js
 let allUserFavorites = [];
+let allUserTickets = [];
+let allUserAttendingEvents = [];
 
 async function fetchuserData () {
     let loggedInUser= await checkUser();
@@ -23,8 +25,8 @@ async function fetchuserData () {
       }
 }
 
-const fetchFavoritesData = async () => {
-    let thisUser = await fetchuserData();
+const fetchFavoritesData = async (thisUser) => {
+    // let thisUser = await fetchuserData();
 
     const {data, error} = await supabase
         .from('favorites')
@@ -34,9 +36,10 @@ const fetchFavoritesData = async () => {
                 id,
                 title,
                 location,
-                category,
                 image_url,
-                datetime
+                datetime,
+                category,
+                event_access
             )`
         )
         .eq('user_id', thisUser.id)
@@ -49,18 +52,14 @@ const fetchFavoritesData = async () => {
         console.log('Data fetched successfully')
         // console.log(JSON.stringify(data))
         allUserFavorites = data; // Store fetched posts globally
-        console.log("favorites", allUserFavorites)
         await loadFavorites(allUserFavorites); // Load all posts initially
     }
 }
 
-
-
 async function loadFavorites(allUserFavorites) {
     const favoritesContainer = document.getElementById('favorites-container');
     let favorites = allUserFavorites.map( (element) => element.events );
-    console.log("whet are favorites ", favorites);
-    // console.log("whet are posts ", favorites[0].title);
+    // console.log("whet are favorites ", favorites);
     // ... fetch posts from Supabase ...
     
     // Clear and rebuild the entire posts container
@@ -74,18 +73,37 @@ async function loadFavorites(allUserFavorites) {
 
             const html_to_insert = `
                 <div class="event-card">
-                    <figure class="favorite-event-image">
-                        ${ favorites.image_url ? `<img src="${favorites.image_url}" 
-                            alt="event image" 
-                            class="event-image"
-                            />`: ''}
-                    </figure>
+                  <div class="event-box-header">
+                    <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(favorites.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
+                  </div>
+                  <figure class="favorite-event-image">
+                      ${ favorites.image_url ? `<img src="${favorites.image_url}" 
+                      alt="event image" 
+                      class="event-image"
+                      />`: ''}
+                  </figure>
+                  <div class="favorite-event-content">
                     <div class="favorite-event-details">
-                        <h3>${favorites.title}</h3>
-                        <p>${favorites.location}</p>
-                        <p>${new Date(favorites.datetime).toLocaleDateString()}</p>
-                        <p class="event-category">${favorites.category}</p>
+                      <h3>${favorites.title}</h3>
+                      <p><i class="fa-solid fa-location-dot"></i>${favorites.location}</p>
+                      <ul class="favorite-event-tags">
+                        <li>
+                          <small class="event-category"><i class="fa-solid fa-icons"></i>${favorites.category}</small>
+                        </li>
+                        <li>
+                          <small class="event-category"><i class="fa-solid fa-ticket"></i>${favorites.event_access}</small>
+                        </li> 
+                      </ul>
                     </div>
+                  </div>
+                  <div class="post-actions">
+                    <button class="save-btn">
+                      <i class="far fa-bookmark fa-solid" title="Save" style="color:red"></i>
+                    </button>
+                    <button class="share-btn">
+                      <i class="fas fa-share" title="Share"></i>
+                    </button>
+                  </div>
                 </div>
             `;
 
@@ -93,6 +111,161 @@ async function loadFavorites(allUserFavorites) {
             favoritesContainer.insertAdjacentHTML('beforeend', html_to_insert);
         });
     }
+}
+
+// Add this function to handle ticket fetching
+const fetchTicketsData = async (thisUser) => {
+  // let thisUser = await fetchuserData();
+
+  const { data, error } = await supabase
+      .from('tickets')
+      .select(`
+          *,
+          events (
+              id,
+              title,
+              location,
+              datetime,
+              image_url
+          )
+      `)
+      .eq('user_id', thisUser.id);
+
+  if (error) {
+      console.error('Error fetching tickets:', error);
+      return;
+  }
+
+  if (data) {
+    allUserTickets = data;
+    await loadTickets(allUserTickets);
+  }
+};
+
+// Add this function to handle ticket display
+async function loadTickets(tickets) {
+  const ticketsContainer = document.getElementById('tickets-container');
+  ticketsContainer.innerHTML = '';
+
+  if (!tickets || tickets.length === 0) {
+      ticketsContainer.innerHTML = '<p class="empty-message">NO TICKETS PURCHASED YET.</p>';
+      return;
+  }
+
+  tickets.forEach(ticket => {
+      const event = ticket.events;
+      const html = `
+          <div class="ticket-card">
+              <div class="ticket-header">
+              
+                  <span class="event-date">${new Date(event.datetime).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })}</span>
+                <p class="event-title">${event.title}</p>
+              </div>
+              <div class="ticket-body">
+                  
+                  <h3 class="ticket-holder-name">${ticket.ticket_holder_name}</h3>
+                  <div class="ticket-details">
+                      <span class="ticket-type">${ticket.admission}</span>
+                      <span class="ticket-price">$${ticket.price.toFixed(2)}</span>
+                      <span class="ticket-quantity">${ticket.quantity}</span>
+                  </div>
+                  <span class="event-venue">${event.location}</span>
+                  <div class="ticket-barcode">
+                      <i class="fas fa-barcode"></i>
+                      <span>${ticket.barcode_number}</span>
+                  </div>
+              </div>
+              <div class="ticket-notch"></div>
+          </div>
+      `;
+      ticketsContainer.insertAdjacentHTML('beforeend', html);
+  });
+}
+
+// Add this function to handle ticket fetching
+const fetchAttendingEventData = async (thisUser) => {
+  // let thisUser = await fetchuserData();
+
+  const { data, error } = await supabase
+      .from('attended_events')
+      .select(`
+          *,
+          events (
+              id,
+              title,
+              location,
+              datetime,
+              image_url,
+              category,
+              event_access
+          )
+      `)
+      .eq('user_id', thisUser.id);
+
+  if (error) {
+      console.error('Error fetching events:', error);
+      return;
+  }
+
+  if (data) {
+    console.log('events data:', data);
+    allUserAttendingEvents = data;
+    await loadAttendingEvents(allUserAttendingEvents);
+  }
+};
+
+// Add this function to handle ticket display
+async function loadAttendingEvents(attendingEvents) {
+  const container = document.getElementById('attending-container');
+  container.innerHTML = '';
+
+  if (!attendingEvents || attendingEvents.length === 0) { // Fixed variable name
+    container.innerHTML = '<p class="empty-message">NO UPCOMING EVENTS.</p>';
+    return;
+  }
+
+  console.log(attendingEvents)
+
+  attendingEvents.forEach(attendingEvent => { // Fixed parameter name
+    const event = attendingEvent.events;
+    const html = `
+      <div class="event-card">
+        <div class="event-box-header">
+          <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(event.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
+        </div>
+        ${attendingEvent.status ? `<div class="status-badge"><p>${attendingEvent.status}</p></div>` : ''}
+        <figure class="attending-event-image">
+          ${ event.image_url ? `<img src="${event.image_url}" 
+          alt="${event.title}"
+          class="event-image"
+          />`: ''}
+        </figure>
+        <div class="attending-event-content">
+          <div class="attending-event-details">
+            <h3>${event.title}</h3>
+            <p><i class="fa-solid fa-location-dot"></i>${event.location}</p>
+            <ul class="attending-event-tags">
+              <li>
+                <small class="event-category"><i class="fa-solid fa-icons"></i>${event.category}</small>
+              </li>
+              <li>
+                <small class="event-category"><i class="fa-solid fa-ticket"></i>${event.event_access}</small>
+              </li> 
+            </ul>
+          </div>
+        </div>
+        <div class="post-actions">
+          <button class="save-btn">
+            <i class="far fa-bookmark" title="Save"></i>
+          </button>
+          <button class="share-btn">
+            <i class="fas fa-share" title="Share"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -104,5 +277,37 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add event listeners for login and signup
     // const User = checkUser()
-    fetchFavoritesData();
+    
+    // fetchFavoritesData();
+    // fetchTicketsData();
+
+    (async () => {
+      try {
+        const thisUser = await fetchuserData();
+        fetchFavoritesData(thisUser); // Pass user to favorites
+        fetchTicketsData(thisUser);    // Pass user to tickets
+        fetchAttendingEventData(thisUser); // Pass user to attending events
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+      }
+    })();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab-button');
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active classes
+      document.querySelectorAll('.tab-button, .tab-content').forEach(el => {
+        el.classList.remove('active-tab', 'active');
+      });
+      
+      // Add active classes
+      tab.classList.add('active-tab');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+});
+
+

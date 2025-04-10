@@ -220,7 +220,7 @@ function applyFavoriteState(favorites) {
   // For explore page: Apply favorite heart state
   document.querySelectorAll(".event-box").forEach((eventBox) => {
     let eventTitle = eventBox.querySelector(".event-title").innerText;
-    let heartIcon = eventBox.querySelector(".heart-btn i");
+    let heartIcon = eventBox.querySelector(".save-btn i");
 
     if (favorites.includes(eventTitle)) {
       heartIcon.classList.remove("fa-regular");
@@ -287,7 +287,7 @@ function displayFavoritedEvents(favorites) {
     eventCard.classList.add("event-box");
     eventCard.innerHTML = `
       <p class="event-title">${eventTitle}</p>
-      <button class="heart-btn" onclick="toggleHeart(this)">
+      <button class="save-btn" onclick="toggleHeart(this)">
         <i class="fa-solid fa-heart" style="color: red;"></i> <!-- Set the heart to be filled initially -->
       </button>
     `;

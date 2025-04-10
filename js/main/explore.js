@@ -221,25 +221,37 @@ async function loadEvents(events) {
             // Access post properties directly (no [0])
             const html_to_insert = `
             <div class="event-box">
-                <div class="event-image">
-                    ${event.image_url ? `<img src="${event.image_url}" 
-                    alt="Post Image" 
-                    class="event-image"
-                    >` : ''}   
+              <a href="../events/eventOV.html?id=${event.id}" class="event-link">
+                <div class="event-box-header">
+                  <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(event.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
                 </div>
-                <a href="../events/eventOV.html?id=${event.id}" class="clickable-text">
+                <figure class="event-image">
+                  <img src="${event.image_url}" alt="${event.title}">
+                </figure>
+                
+                <div class="event-content">
+                  <div class="event-details">
                     <h3 class="event-title">${event.title}</h3>
-                    <p>${new Date(event.datetime).toLocaleDateString()} </p>
-                    <p>${event.location}</p>
-                    <small class="event-category">${event.category} </small>
-                </a>
-                <div class="post-actions">
-                   <button class="heart-btn" onclick="toggleHeart(this)" data-event-id="${event.id}">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                    <i class="far fa-comment" title="Comment"></i>
-                    <i class="fas fa-share" title="Share"></i>
+                    <p><i class="fa-solid fa-location-dot"></i>${event.location}</p>
+                    <ul class="event-tags">
+                      <li>
+                        <small class="event-category"><i class="fa-solid fa-icons"></i>${event.category}</small>
+                      </li>
+                      <li>
+                        <small class="event-category"><i class="fa-solid fa-ticket"></i>${event.event_access}</small>
+                      </li> 
+                    </ul>
+                  </div>
                 </div>
+              </a>
+              <div class="post-actions">
+                <button class="save-btn" onclick="toggleHeart(this)" data-event-id="${event.id}">
+                  <i class="far fa-bookmark" title="Save"></i>
+                </button>
+                <button class="share-btn" data-event-id="${event.id}">
+                  <i class="fas fa-share" title="Share"></i>
+                </button>
+              </div>
             </div>`;
 
             // Insert HTML for each post
@@ -285,16 +297,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // For explore page: Apply favorite heart state
     document.querySelectorAll(".event-box").forEach((eventBox) => {
       let eventTitle = eventBox.querySelector(".event-title").innerText;
-      let heartIcon = eventBox.querySelector(".heart-btn i");
+      let saveIcon = eventBox.querySelector(".save-btn i");
   
       if (favorites.includes(eventTitle)) {
-        heartIcon.classList.remove("fa-regular");
-        heartIcon.classList.add("fa-solid");
-        heartIcon.style.color = "red";
+        saveIcon.classList.remove("fa-regular");
+        saveIcon.classList.add("fa-solid");
+        saveIcon.style.color = "#ffb03a";
       } else {
-        heartIcon.classList.remove("fa-solid");
-        heartIcon.classList.add("fa-regular");
-        heartIcon.style.color = "";
+        saveIcon.classList.remove("fa-solid");
+        saveIcon.classList.add("fa-regular");
+        saveIcon.style.color = "";
       }
     });
   
@@ -399,18 +411,18 @@ async function applyFavoriteStates() {
         // console.log("Favorite IDs:", favoriteTitles);
 
         // Update heart icons
-        document.querySelectorAll('.heart-btn').forEach(btn => {
+        document.querySelectorAll('.save-btn').forEach(btn => {
             const eventId = btn.dataset.eventId;
-            const heartIcon = btn.querySelector('i');
+            const saveIcon = btn.querySelector('i');
             
             if (favoriteIds.includes(eventId)) {
-                heartIcon.classList.remove('fa-regular');
-                heartIcon.classList.add('fa-solid');
-                heartIcon.style.color = 'red';
+                saveIcon.classList.remove('fa-regular');
+                saveIcon.classList.add('fa-solid');
+                saveIcon.style.color = 'red';
             } else {
-                heartIcon.classList.remove('fa-solid');
-                heartIcon.classList.add('fa-regular');
-                heartIcon.style.color = '';
+                saveIcon.classList.remove('fa-solid');
+                saveIcon.classList.add('fa-regular');
+                saveIcon.style.color = '';
             }
         });
     } catch (error) {
@@ -420,7 +432,7 @@ async function applyFavoriteStates() {
 
 
 async function toggleHeart(button) {
-    let heartIcon = button.querySelector("i");
+    let saveIcon = button.querySelector("i");
     let eventId = button.getAttribute("data-event-id");
     let user = await fetchuserData();
 
@@ -456,9 +468,9 @@ async function toggleHeart(button) {
             return;
         }
 
-        heartIcon.classList.remove("fa-solid");
-        heartIcon.classList.add("fa-regular");
-        heartIcon.style.color = "";
+        saveIcon.classList.remove("fa-solid");
+        saveIcon.classList.add("fa-regular");
+        saveIcon.style.color = "";
     } else {
         // Add to favorites
         let { error: insertError } = await supabase
@@ -470,9 +482,9 @@ async function toggleHeart(button) {
             return;
         }
 
-        heartIcon.classList.remove("fa-regular");
-        heartIcon.classList.add("fa-solid");
-        heartIcon.style.color = "red";
+        saveIcon.classList.remove("fa-regular");
+        saveIcon.classList.add("fa-solid");
+        saveIcon.style.color = "red";
     }
 
     // Refresh favorites state

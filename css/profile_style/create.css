@@ -20,68 +20,12 @@ body {
     padding-top: 80px;
 }
 
-/* Logo Positioned Outside Navbar */
-.nav-logo {
-    position: absolute;
-    left: -10px;
-    top: -30px;
-}
-
-.nav-logo img {
-    width: 200px;
-}
-
-/* Navigation Bar */
-.navbar {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ECE4D6;
-    padding: 10px 30px;
-    margin: -40px 0;
-    border-radius: 15px;
-    border: 2px solid black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 90%;
-    min-width: 600px;
-    box-sizing: border-box;
-}
-
-/* Navigation Links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 20px;
-    text-decoration: none;
-    font-family: 'Anton', sans-serif;
-    color: black;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links .active {
-    background-color: #fdbd5e;
-    color: white;
-    padding: 8px 25px;
-}
-
 /* Header Styling */
 .event-header {
+    position: relative;
     display: flex;
+    flex-direction: row;
+    gap:1.5rem;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
@@ -123,10 +67,38 @@ body {
 
 /* Event Form Styling */
 .event-form {
-    max-width: 420px; /* Slightly wider form */
-    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    margin-top: 40px;
+    background-color: #ECE4D6;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 3px solid #000000; /* Added border */
+    transition: box-shadow 0.3s ease;
+    font-family: 'Oswald', sans-serif;
     text-align: left;
     color: black;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset{
+    border: none;
+}
+
+.form-field input, .form-field select {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
 }
 
 /* Form Labels */
@@ -156,20 +128,26 @@ body {
     border: none;
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
-    background: none;
+    background: white;
     width: 100%;
     outline: none;
     padding: 10px;
     border-radius: 25px; /* More rounded edges */
+    text-align: left;
 }
 
 /* Date & Time Container */
 .date-time-container {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    justify-content: center;
+    gap: 1.5rem;
     margin-top: 15px;
-    border-radius: 25px; /* More rounded edges */
+    margin-bottom: 1.5rem;
+    border-radius: 25px; 
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem; */
 }
 
 /* Label Styling */
@@ -183,7 +161,7 @@ body {
 }
 
 /* Input Box Styling */
-.input-box {
+/* .input-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -194,9 +172,9 @@ body {
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     width: 100%;
-    max-width: 180px; /* Keeps inputs uniform in size */
-    border-radius: 25px; /* More rounded edges */
-}
+    max-width: 180px;
+    border-radius: 25px; 
+} */
 
 .input-box i {
     font-size: 1.2rem;
@@ -206,43 +184,31 @@ body {
 }
 
 /* More Rounded Input Fields for Consistency */
-.input-box {
+/* .input-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px;
-    border-radius: 35px; /* Fully rounded like other fields */
+    border-radius: 35px; 
     border: 2px solid black;
     background-color: white;
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     width: 100%;
     max-width: 100%;
-}
-
-/* More Rounded Text Inputs Inside */
-.input-box input {
-    border: none;
-    font-size: 1rem;
-    font-family: 'Oswald', sans-serif;
-    background: none;
-    width: 100%;
-    outline: none;
-    padding: 10px;
-    text-align: center; /* Centers text inside input fields */
-}
+} */
 
 /* Larger Text Area to Match Other Inputs */
-.textarea-box {
+/* .textarea-box {
     padding: 14px;
-    border-radius: 50px; /* Fully rounded like other fields */
+    border-radius: 50px;
     border: 2px solid black;
     background-color: white;
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     width: 100%;
     max-width: 100%;
-}
+} */
 
 /* Styling for the Text Area */
 .textarea-box textarea {
@@ -255,6 +221,48 @@ body {
     padding: 10px;
     height: 150px; /* Larger height for more content */
     resize: none; /* Disable resizing to maintain styling */
+}
+
+/* styling for file input */
+.form-field .file-input-label {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.form-field .file-input-label:hover {
+    transform: scale(1.03);
+    background-color: #f8ddb5;
+    border: 2px dashed #333;
+    color: #333;
+}
+
+
+/* Custom styling for file upload input */
+
+/* Hover state for file input */
+.form-field input[type="file"]:hover {
+    background-color: #f0f0f0;
+    border-color: #fdbd5e;
+}
+
+
+/* Hide the default file input and use our custom styled one */
+.form-field input[type="file"].custom-file-input {
+    display: none;
+}
+
+/* File name display area */
+.file-name-display {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
 }
 
 /* Invite Section */
@@ -313,4 +321,147 @@ body {
 /* Hover Effect */
 .create-event-btn:hover {
     transform: scale(1.05);
+}
+
+/* Event Form Container */
+.event-form-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #ECE4D6;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 3px solid #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Event Header */
+.event-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.event-header h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.event-header p {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Form Field Styling */
+.form-field {
+    margin-bottom: 1.5rem;
+}
+
+.form-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(253, 189, 94, 0.5);
+}
+
+/* Date/Time Grid */
+
+/* Invite Section */
+.invite-section {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.invite-grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.invite-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f7f7f7;
+    border: 2px dashed #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.invite-circle:hover {
+    background-color: #fdbd5e;
+    transform: scale(1.05);
+}
+
+/* Textarea Styling */
+.form-field textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Button Styling */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.create-event-btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2.5px solid #000000;
+    background-color: #fdbd5e;
+    color: #000;
+    width: 100%;
+    max-width: 300px;
+}
+
+.create-event-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Back Button */
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    left: 20px;
+    top: 20px;
 }

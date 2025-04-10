@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PostUP - Create an Event</title>
     <link rel="stylesheet" href="../../css/profile_style/create.css" />
+    <link rel="stylesheet" href="../../css/global/navbar.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
   <body>
     <!-- Logo Positioned Outside Navbar -->
@@ -19,104 +25,115 @@
     </div>
 
     <!-- Navigation Bar -->
-    <div class="navbar-container">
+    <header class="navbar-container">
       <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="../main/explore.html" class="explore-btn">EXPLORE</a></li>
-          <li><a href="../main/saved_events.html">EVENTS</a></li>
-          <li><a href="../main/profile.html" class="active">PROFILE</a></li>
-          <li><a href="../main/index.html" class="logout-btn">LOGOUT</a></li>
+          <li><a href="../main/explore.html" class="explore-nav-link"><i class="fas fa-compass"></i> EXPLORE</a></li>
+          <li><a href="../main/saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
+          <li><a href="../main/profile.html" class="profile-nav-link active"><i class="fas fa-user"></i> PROFILE</a></li>
+          <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li>
         </ul>
       </nav>
-    </div>
+    </header>
 
-    <br>
-    <br>
+    
     <header class="event-header">
         <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
         <div class="event-title">
-            <h2>CREATING AN EVENT?</h2>
-            <p>FILL OUT THIS FORM BELOW TO CREATE AN EVENT<br>FOR OTHERS TO ATTEND!</p>
+          <h2>CREATING AN EVENT?</h2>
+          <p>FILL OUT THIS FORM BELOW TO CREATE AN EVENT<br>FOR OTHERS TO ATTEND!</p>
         </div>
         <button class="menu-btn"><i class="fas fa-ellipsis-v"></i></button>
     </header>
-    
-    <br>
 
-   <!-- Event Title (Updated for Consistency) -->
-<div class="form-group">
-    <label for="event-title">EVENT TITLE</label>
-    <div class="input-box">
-        <input type="text" id="event-title" placeholder="Enter event title here...">
-    </div>
-</div>
-    
-<!-- Date & Time Selection (Editable) -->
-<div class="date-time-container">
-    <div class="input-group">
-        <label for="event-date">DATE</label>
-        <div class="input-box">
-            <input type="date" id="event-date" value="2025-11-09">
-            <i class="fas fa-calendar-alt"></i>
-        </div>
-    </div>
-    <div class="input-group">
-        <label for="event-time">TIME</label>
-        <div class="input-box">
-            <input type="time" id="event-time" value="19:00">
-            <i class="fas fa-clock"></i>
-        </div>
-    </div>
-</div>
+    <!-- Event Form -->
+    <section class="event-form">
+      <form action="" method="POST" id="form"> 
+          <!-- Event Title (Updated for Consistency) -->
+        <fieldset class="form-field">
+          <label for="event-title">EVENT TITLE <i class="fa-solid fa-heading"></i></label>
+          <div class="input-box">
+              <input type="text" id="event-title" placeholder="Enter event title here...">
+          </div>
+        </fieldset>
 
-<br>
+        <!-- Date & Time Selection (Editable) -->
+        <fieldset class="date-time-container">
+          <div class="input-group">
+              <label for="event-date">DATE <i class="fas fa-calendar-alt"></i></label>
+              <div class="input-box">
+                  <input type="date" id="event-date" value="">
+              </div>
+          </div>
+          <div class="input-group">
+              <label for="event-time">TIME <i class="fa-solid fa-clock"></i></label>
+              <div class="input-box">
+                  <input type="time" id="event-time" value="">
+              </div>
+          </div>
+        </fieldset>
 
-<!-- Location Input (Editable) -->
-<div class="form-group">
-    <label for="event-location">LOCATION</label>
-    <div class="input-box">
-        <input type="text" id="event-location" placeholder="Enter event location here..." value="Enter event location...">
-        <i class="fas fa-map-marker-alt"></i>
-    </div>
-</div>
+        <fieldset class="form-field">
+          <label for="event-category">Category</label>
+          <select id="event-category" name="category">
+            <option value="">Select your event category...</option>
+            <option value="Live Music">Live Music</option>
+            <option value="Food Market">Food Market</option>
+            <option value="Art Market">Art Market</option>
+            <option value="Festivals">Festivals</option>
+            <option value="Sports">Sports</option>
+            <option value="Other">Other</option>
+        </select>        
+        </fieldset>
 
-<br>
-<br>
-<!-- Additional Information (Text Area) -->
-<div class="form-group">
-    <label for="event-description">ADDITIONAL INFORMATION</label>
-    <div class="input-box textarea-box">
-        <textarea id="event-description" placeholder="Enter details about your event..."></textarea>
-    </div>
-</div>
+        <!-- Location Input (Editable) -->
+        <fieldset class="form-field">
+          <label for="event-location">LOCATION <i class="fas fa-map-marker-alt"></i></label> 
+          <div class="input-box">
+              <input type="text" id="event-location" placeholder="Enter event location here...">
+              
+          </div>
+        </fieldset>
+        <!-- Additional Information (Text Area) -->
+        <fieldset class="form-field">
+          <legend for="event-description">ADDITIONAL INFORMATION</legend>
+          <div class="input-box textarea-box">
+            <label for="event-description">Event Details</label>
+            <textarea id="event-description" placeholder="Enter details about your event..."></textarea>
+          </div>
+        </fieldset>
 
-<br>
-<br>
-<!-- Invite People Section -->
-<div class="form-group">
-    <label>INVITE PEOPLE</label>
-    <div class="invite-section">
-        <div class="circle">
-            <img src="../../images/plussign.png" alt="User 1">
-        </div>
-        <div class="circle">
-            <img src="../../images/plussign.png" alt="User 2">
-        </div>
-        <div class="circle">
-            <img src="../../images/plussign.png" alt="User 3">
-        </div>
-        <div class="circle">
-            <img src="../../images/plussign.png" alt="User 3">
-        </div>
-</div>
+        <fieldset class="form-field">
+          <label for="event-pic">EVENT PICTURE</label>
+          <input type="file" id="event-pic" name="event-pic" class="custom-file-input" />
+          <label for="event-pic" class="file-input-label">CHOOSE FILE</label>
+          <div class="file-name-display">No file chosen</div>
+        </fieldset>
 
-<br>
-<!-- Create Event Button -->
-<a href="../main/profile.html" class="create-event-btn">Create Event</a>
-
-
-<br>
-<br>
-<script src="../../js/scripts.js"></script>
+        <!-- Invite People Section -->
+        <fieldset class="form-field">
+          <legend>INVITE PEOPLE</legend>
+          <div class="invite-section">
+              <div class="circle">
+                  <img src="../../images/plussign.png" alt="User 1">
+              </div>
+              <div class="circle">
+                  <img src="../../images/plussign.png" alt="User 2">
+              </div>
+              <div class="circle">
+                  <img src="../../images/plussign.png" alt="User 3">
+              </div>
+              <div class="circle">
+                  <img src="../../images/plussign.png" alt="User 3">
+              </div>
+          </div>
+          <!-- Create Event Button -->
+          <button type="submit" class="create-event-btn">Create Event</button>
+      </form>
+    </section>
+  <script src="../../js/scripts.js"></script>
+  <script src="../../js/supabase.js"></script>
+  <script src="../../js/util/checkUser.js"></script>
+  <script src="../../js/features/createEvent.js"></script>
 </body>
 </html>

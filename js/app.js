@@ -223,7 +223,7 @@ async function loadPosts(posts) {
                     <p>Organizer ${post.profiles?.username || 'Unknown User'}</p>
                 </a>
                 <div class="post-actions">
-                    <button class="heart-btn" onclick="toggleHeart(this)">
+                    <button class="save-btn" onclick="toggleHeart(this)">
                         <i class="fa-regular fa-heart"></i>
                     </button>
                     <i class="far fa-comment" title="Comment"></i>

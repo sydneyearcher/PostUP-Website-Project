@@ -23,12 +23,12 @@ body {
 /* Logo Positioned Outside Navbar */
 .nav-logo {
     position: absolute;
-    left: -10px;
-    top: -30px;
+    left: 0px;
+    top: 0px;
 }
 
 .nav-logo img {
-    width: 200px;
+    width: var(--nav-logo-mobile-width);
 }
 
 .event-overview {
