@@ -93,7 +93,7 @@ async function handleSignup(event) {
         let lat, lng;
         if (location) {
             console.log("Geocoding location:", location);
-            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk`;
+            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyCBYsHzYCmxpnhAD18w1N7I3R4LixY__-Q`;
             const response = await fetch(geocodeUrl);
             const data = await response.json();
             if (data.status !== "OK") throw new Error("Geocoding failed: " + data.status);

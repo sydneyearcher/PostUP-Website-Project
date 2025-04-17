@@ -63,7 +63,7 @@ function populateEventData(event) {
     const encodedAddress = encodeURIComponent(address);
 
     // Construct the Google Maps URL
-    const apiKey = 'AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk';
+    const apiKey = 'AIzaSyCBYsHzYCmxpnhAD18w1N7I3R4LixY__-Q';
     const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`;
 
     // Update the iframe

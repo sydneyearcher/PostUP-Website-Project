@@ -211,7 +211,7 @@ async function updateEventLocation(eventId, location) {
   // 1. Geocode the address using Google API
   console.log('Updating location for event:', eventId);
   console.log('Location:', location);
-  const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk`;
+  const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyCBYsHzYCmxpnhAD18w1N7I3R4LixY__-Q`;
   const response = await fetch(geocodeUrl);
   const data = await response.json();
   

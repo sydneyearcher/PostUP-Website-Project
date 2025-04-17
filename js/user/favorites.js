@@ -2,11 +2,12 @@
 let allUserFavorites = [];
 let allUserTickets = [];
 let allUserAttendingEvents = [];
+let currentUser;
 
 async function fetchuserData () {
     let loggedInUser= await checkUser();
     
-    console.log('Fetching data of...', loggedInUser.user.id);
+    console.log('Fetching data of user...');
     
     const {data, error} = await supabase
       .from('profiles')
@@ -99,7 +100,7 @@ async function loadFavorites(allUserFavorites) {
                     </div>
                   </a>
                   <div class="post-actions">
-                    <button class="save-btn">
+                    <button class="save-btn" onclick="toggleHeart(this)" data-event-id="${favorites.id}">
                       <i class="far fa-bookmark fa-solid" title="Save" style="color:red"></i>
                     </button>
                     <button class="share-btn">
@@ -210,7 +211,7 @@ const fetchAttendingEventData = async (thisUser) => {
   }
 
   if (data) {
-    console.log('events data:', data);
+    console.log('events data:');
     allUserAttendingEvents = data;
     await loadAttendingEvents(allUserAttendingEvents);
   }
@@ -226,7 +227,7 @@ async function loadAttendingEvents(attendingEvents) {
     return;
   }
 
-  console.log(attendingEvents)
+  // console.log(attendingEvents)
 
   attendingEvents.forEach(attendingEvent => { // Fixed parameter name
     const event = attendingEvent.events;
@@ -259,7 +260,7 @@ async function loadAttendingEvents(attendingEvents) {
           </div>
         </a>
         <div class="post-actions">
-          <button class="save-btn">
+          <button class="save-btn" onclick="toggleHeart(this)" data-event-id="${event.id}">
             <i class="far fa-bookmark" title="Save"></i>
           </button>
           <button class="share-btn">
@@ -291,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchFavoritesData(thisUser); // Pass user to favorites
         fetchTicketsData(thisUser);    // Pass user to tickets
         fetchAttendingEventData(thisUser); // Pass user to attending events
+        await applyFavoriteStates();
       } catch (error) {
         console.error('Failed to fetch user:', error);
       }
@@ -315,3 +317,120 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+async function applyFavoriteStates() {
+  console.log("Applying favorite states...");
+  try {
+    const user = await fetchuserData();
+    if (!user) return error("User not found");
+
+    // Get user's favorites
+    const { data: favorites, error } = await _supabase
+      .from('favorites')
+      .select(`
+        *,
+        events (
+          id,
+          title,
+          location,
+          category,
+          image_url,
+          datetime
+        )`
+      )
+      .eq('user_id', user.id);
+
+    if (error) throw error;
+
+    // console.log("Favorites:", favorites);
+
+    // Create array of favorited event IDs
+    const favoriteIds = favorites.map(fav => fav.event_id);
+
+    const favoriteTitles = favorites.map(fav => fav.events.title);
+
+    // console.log("Favorite IDs:", favoriteTitles);
+
+    // Update heart icons
+    document.querySelectorAll('.save-btn').forEach(btn => {
+      const eventId = btn.dataset.eventId;
+      // console.log(eventId);
+      const saveIcon = btn.querySelector('i');
+      
+      if (favoriteIds.includes(eventId)) {
+        saveIcon.classList.remove('fa-regular');
+        saveIcon.classList.add('fa-solid');
+        saveIcon.style.color = 'red';
+      } else {
+        saveIcon.classList.remove('fa-solid');
+        saveIcon.classList.add('fa-regular');
+        saveIcon.style.color = '';
+      }
+    });
+  } catch (error) {
+    console.error('Error applying favorites:', error);
+  }
+}
+
+
+async function toggleHeart(button) {
+  let saveIcon = button.querySelector("i");
+  let eventId = button.getAttribute("data-event-id");
+  // let user = await fetchuserData();
+  currentUser = await fetchuserData();
+
+  if (!currentUser) {
+    console.log("User not logged in.");
+    return;
+  } else {
+    console.log("User logged in:");
+  }
+
+  // console.log(eventId);
+
+  // Check if the event is already favorited
+  let { data: existingFavs, error } = await supabase
+    .from("favorites")
+    .select("id")
+    .eq("user_id", currentUser.id)
+    .eq("event_id", eventId);
+
+  if (error) {
+    console.error("Error checking favorites:", error);
+    return;
+  }
+
+  if (existingFavs.length > 0) {
+    // Remove from favorites
+    let { error: deleteError } = await supabase
+      .from("favorites")
+      .delete()
+      .eq("user_id", currentUser.id)
+      .eq("event_id", eventId);
+
+    if (deleteError) {
+      console.error("Error removing favorite:", deleteError);
+      return;
+    }
+
+    saveIcon.classList.remove("fa-solid");
+    saveIcon.classList.add("fa-regular");
+    saveIcon.style.color = "";
+  } else {
+    // Add to favorites
+    let { error: insertError } = await supabase
+      .from("favorites")
+      .insert([{ user_id: currentUser.id, event_id: eventId }]);
+
+    if (insertError) {
+      console.error("Error adding favorite:", insertError);
+      return;
+    }
+
+    saveIcon.classList.remove("fa-regular");
+    saveIcon.classList.add("fa-solid");
+    saveIcon.style.color = "red";
+  }
+
+  // Refresh favorites state
+  fetchFavoritesData();
+}

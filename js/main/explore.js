@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentUser = await fetchuserData();
       if (currentUser) {
         let coords = await convertuserCoords(currentUser);
-        console.log(coords);
+        // console.log(coords);
         // userLat = currentUser.latitude;
         // userLon = currentUser.longitude;
         userLat = coords.latitude;
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           });
         });
 
-        console.log(eventsWithDistances);
+        // console.log(eventsWithDistances);
       }
       } catch (error) {
         console.error('Error fetching user:', error);
@@ -164,7 +164,7 @@ if (data) {
 }
 
 const getDistanceToEvents = async (coords) => {
-  console.log("getting nearby events soorted by coords", coords);
+  console.log("getting nearby events soorted by coords");
    const { data, error } = await supabase.rpc('get_nearby_events', { 
       lat: coords.latitude,  // Parameter names must match the function definition
       lon: coords.longitude  // "lat" and "lon" (not "latitude"/"longitude")
@@ -452,7 +452,7 @@ const fetchFavoritesData = async () => {
         console.log('Data fetched successfully')
         // console.log(JSON.stringify(data))
         allUserFavorites = data; // Store fetched posts globally
-        console.log("favorites", allUserFavorites)
+        // console.log("favorites", allUserFavorites)
         // await loadFavorites(); // Load all posts initially
     }
 }
