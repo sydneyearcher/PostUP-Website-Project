@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PostUP - Create an Event</title>
-    <link rel="stylesheet" href="../../css/profile_style/create.css" />
+    <title>PostUP - Edit an Event</title>
+    <link rel="stylesheet" href="../../css/profile_style/editevent.css" />
     <link rel="stylesheet" href="../../css/global/navbar.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
@@ -40,8 +40,8 @@
     <header class="event-header">
         <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
         <div class="event-title">
-          <h2>CREATING AN EVENT?</h2>
-          <p>FILL OUT THIS FORM BELOW TO CREATE AN EVENT<br>FOR OTHERS TO ATTEND!</p>
+          <h2>EDITING AN EVENT?</h2>
+          <p>FILL OUT THIS FORM BELOW TO EDIT YOUR EVENT<br>FOR OTHERS TO ATTEND!</p>
         </div>
         <button class="menu-btn"><i class="fas fa-ellipsis-v"></i></button>
     </header>
@@ -53,7 +53,7 @@
         <fieldset class="form-field">
           <label for="event-title">EVENT TITLE <i class="fa-solid fa-heading"></i></label>
           <div class="input-box">
-              <input type="text" id="event-title" placeholder="Enter event title here..." required>
+              <input type="text" id="event-title" placeholder="Enter event title here...">
           </div>
         </fieldset>
 
@@ -62,20 +62,20 @@
           <div class="input-group">
               <label for="event-date">DATE <i class="fas fa-calendar-alt"></i></label>
               <div class="input-box">
-                  <input type="date" id="event-date" value="" required>
+                  <input type="date" id="event-date" value="">
               </div>
           </div>
           <div class="input-group">
               <label for="event-time">TIME <i class="fa-solid fa-clock"></i></label>
               <div class="input-box">
-                  <input type="time" id="event-time" value="" required>
+                  <input type="time" id="event-time" value="">
               </div>
           </div>
         </fieldset>
 
         <fieldset class="form-field">
           <label for="event-category">Category</label>
-          <select id="event-category" name="category" required>
+          <select id="event-category" name="category">
             <option value="">Select your event category...</option>
             <option value="Live Music">Live Music</option>
             <option value="Food Market">Food Market</option>
@@ -88,7 +88,7 @@
 
         <fieldset class="form-field">
           <label for="event-access">Access</label>
-          <select id="event-access" name="access" required>
+          <select id="event-access" name="access">
             <option value="">Select your event access type...</option>
             <option value="Free">Free</option>
             <option value="Paid">Paid</option>
@@ -100,7 +100,8 @@
         <fieldset class="form-field">
           <label for="event-location">LOCATION <i class="fas fa-map-marker-alt"></i></label> 
           <div class="input-box">
-            <input type="text" id="event-location" placeholder="Enter event location here..." required>
+              <input type="text" id="event-location" placeholder="Enter event location here...">
+              
           </div>
         </fieldset>
         <!-- Additional Information (Text Area) -->
@@ -108,17 +109,17 @@
           <legend for="event-description">ADDITIONAL INFORMATION</legend>
           <div class="input-box textarea-box">
             <label for="event-description">Event Details</label>
-            <textarea id="event-description" placeholder="Enter details about your event..." required></textarea>
+            <textarea id="event-description" placeholder="Enter details about your event..."></textarea>
           </div>
         </fieldset>
 
         <fieldset class="form-field">
           <label for="event-pic">EVENT PICTURE</label>
-          <input type="file" id="event-pic" name="event-pic" class="custom-file-input" required/>
+          <input type="file" id="event-pic" name="event-pic" class="custom-file-input" />
           <label for="event-pic" class="file-input-label">CHOOSE FILE</label>
           <div class="file-name-display">No file chosen</div>
         </fieldset>
-        
+
         <!-- Invite People Section -->
         <fieldset class="form-field">
           <legend>INVITE PEOPLE</legend>
@@ -137,12 +138,18 @@
               </div>
           </div>
           <!-- Create Event Button -->
-          <button type="submit" class="create-event-btn">Create Event</button>
+          <!-- <button type="submit" class="create-event-btn">Create Event</button> -->
+        </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="save-btn">SAVE CHANGES</button>
+          <button type="button" class="cancel-btn">CANCEL</button>
+        </fieldset>
       </form>
     </section>
   <script src="../../js/scripts.js"></script>
   <script src="../../js/supabase.js"></script>
   <script src="../../js/util/checkUser.js"></script>
-  <script src="../../js/features/createEvent.js"></script>
+  <script src="../../js/util/loadEvent.js"></script>
+  <script src="../../js/features/editEvent.js"></script>
 </body>
 </html>

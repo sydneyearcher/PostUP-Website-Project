@@ -10,7 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk&libraries=places&callback=initAutocomplete">
+    </script>
   </head>
   <body>
     <!-- Logo Positioned Outside Navbar -->
@@ -24,7 +31,6 @@
     <main class="event-page">
       <!-- Event Overview (Step 1) -->
       <article class="event-overview">
-        <br />
         <div class="event-header">
           <a href="../main/explore.html" class="back-btn" id="back-explore-btn">
             <svg class="back-btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -32,47 +38,86 @@
             </svg>
             Back to Explore
           </a>
-          <div>
-            <h2>YOU’RE ONE STEP CLOSER!</h2>
-            <p>
-              Purchase tickets & find out more information about the event below!
-            </p>
+          <div class="event-header-content">
+            <h2 id="event-title">Nessa Barrett, Aftercare World Tour</h2>
+            <p><strong id="event-category">Live Music</strong> | <strong>1,500+ Going</strong></p>
           </div>
         </div>
-        <br />
-        <br />
-        <img
-          src="../../images/nessabarrett.png"
-          alt="Event Image"
-          class="event-image"
-          id="event-image"
-        />
-        <br />
-        <br />
-        <h2 id="event-title">Nessa Barrett, Aftercare World Tour</h2>
-        <br />
-        <p><strong id="event-category">Live Music</strong> | <strong>1,500+ Going</strong></p>
-        <br />
-        <p>
-          <strong id="event-date">Friday, November 8, 2025</strong> |
-          <strong id="event-location">The House of Blues</strong>
-        </p>
-        <br />
-        <p><strong>Doors open at 7:00 PM</strong></p>
+        <div class="event-body">
+          <figure class="event-image-container">
+            <img
+              src="../../images/nessabarrett.png"
+              alt="Event Image"
+              class="event-image"
+              id="event-image"
+            />
+            <div class="event-actions-btns">
+              <button class="calendar-btn">
+                <i class="fas fa-calendar-plus"></i>
+                Add to My Calendar
+              </button>
+              <button class="maps-btn">
+                <i class="fas fa-map-pin"></i>
+                See Location on Maps
+              </button>
+              <button class="edit-btn"
+                onclick="window.location.href='./editevent.html';"
+              >
+                <i class="fas fa-pen-to-square"></i>
+                Edit event
+              </button>
+            </div>
+          </figure>
+          
+          <div class="event-details">
+            <div class="event-info">
+              <p>
+                <i class="fa-regular fa-calendar-days"></i> <strong id="event-date">Friday, November 8, 2025</strong> |
+                <i class="fa-regular fa-clock"></i> <strong id="event-time">Doors open at 7:00 PM</strong>
+              </p>
+              <p>
+                <i class="fa-solid fa-location-dot"></i> <strong id="event-location">The House of Blues</strong>
+              </p>
+            </div>
+            <!-- Event Description -->
+            <div class="event-description">
+              <h3>About the Event</h3>
+              <p id="event-description">
+                Describe your event here. What is it about? What makes it special?
+              </p>
+            </div>
 
-        <br />
+            <div>
+              <h3>YOU’RE ONE STEP CLOSER!</h3>
+              <p>
+                Purchase tickets & find out more information about the event below!
+              </p>
+            </div>
+            <!-- Container for the map -->
+            <div class="map-container">
+              <iframe 
+                id="dynamicMap" 
+                width="100%" 
+                height="300" 
+                style="border:0; border-radius: 10px;" 
+                allowfullscreen 
+                loading="lazy"
+              >
+            
+              </iframe>
+            </div>
+
+            <!-- Hidden element to hold the dynamic address -->
+            <div id="address" style="display: none;">Florida</div>
+          </div>
+        </div>
         <!-- CTA Buttons -->
         <div class="cta-buttons">
-          <button class="calendar-btn">
-            <strong>Add to My Calendar</strong>
-          </button>
-          <button class="maps-btn">
-            <strong>See Location on Maps</strong>
-          </button>
           <button
             class="buy-tickets-btn"
             onclick="window.location.href='../tickets/ticket.html';"
           >
+            <i class="fa-solid fa-cart-shopping"></i>
             <strong>Buy Tickets Now</strong>
           </button>
         </div>

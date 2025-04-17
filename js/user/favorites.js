@@ -73,29 +73,31 @@ async function loadFavorites(allUserFavorites) {
 
             const html_to_insert = `
                 <div class="event-card">
-                  <div class="event-box-header">
-                    <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(favorites.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
-                  </div>
-                  <figure class="favorite-event-image">
-                      ${ favorites.image_url ? `<img src="${favorites.image_url}" 
-                      alt="event image" 
-                      class="event-image"
-                      />`: ''}
-                  </figure>
-                  <div class="favorite-event-content">
-                    <div class="favorite-event-details">
-                      <h3>${favorites.title}</h3>
-                      <p><i class="fa-solid fa-location-dot"></i>${favorites.location}</p>
-                      <ul class="favorite-event-tags">
-                        <li>
-                          <small class="event-category"><i class="fa-solid fa-icons"></i>${favorites.category}</small>
-                        </li>
-                        <li>
-                          <small class="event-category"><i class="fa-solid fa-ticket"></i>${favorites.event_access}</small>
-                        </li> 
-                      </ul>
+                  <a href="../events/eventOV.html?id=${favorites.id}" class="event-link">
+                    <div class="event-box-header">
+                      <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(favorites.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
                     </div>
-                  </div>
+                    <figure class="favorite-event-image">
+                        ${ favorites.image_url ? `<img src="${favorites.image_url}" 
+                        alt="${favorites.title}" 
+                        class="event-image"
+                        />`: ''}
+                    </figure>
+                    <div class="favorite-event-content">
+                      <div class="favorite-event-details">
+                        <h3>${favorites.title}</h3>
+                        <p><i class="fa-solid fa-location-dot"></i>${favorites.location}</p>
+                        <ul class="favorite-event-tags">
+                          <li>
+                            <small class="event-category"><i class="fa-solid fa-icons"></i>${favorites.category}</small>
+                          </li>
+                          <li>
+                            <small class="event-category"><i class="fa-solid fa-ticket"></i>${favorites.event_access}</small>
+                          </li> 
+                        </ul>
+                      </div>
+                    </div>
+                  </a>
                   <div class="post-actions">
                     <button class="save-btn">
                       <i class="far fa-bookmark fa-solid" title="Save" style="color:red"></i>
@@ -230,30 +232,32 @@ async function loadAttendingEvents(attendingEvents) {
     const event = attendingEvent.events;
     const html = `
       <div class="event-card">
-        <div class="event-box-header">
-          <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(event.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
-        </div>
-        ${attendingEvent.status ? `<div class="status-badge"><p>${attendingEvent.status}</p></div>` : ''}
-        <figure class="attending-event-image">
-          ${ event.image_url ? `<img src="${event.image_url}" 
-          alt="${event.title}"
-          class="event-image"
-          />`: ''}
-        </figure>
-        <div class="attending-event-content">
-          <div class="attending-event-details">
-            <h3>${event.title}</h3>
-            <p><i class="fa-solid fa-location-dot"></i>${event.location}</p>
-            <ul class="attending-event-tags">
-              <li>
-                <small class="event-category"><i class="fa-solid fa-icons"></i>${event.category}</small>
-              </li>
-              <li>
-                <small class="event-category"><i class="fa-solid fa-ticket"></i>${event.event_access}</small>
-              </li> 
-            </ul>
+        <a href="../events/eventOV.html?id=${event.id}" class="event-link">
+          <div class="event-box-header">
+            <p class="event-time"><i class="fa-regular fa-calendar-days"></i>${new Date(event.datetime).toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'})}</p> 
           </div>
-        </div>
+          ${attendingEvent.status ? `<div class="status-badge"><p>${attendingEvent.status}</p></div>` : ''}
+          <figure class="attending-event-image">
+            ${ event.image_url ? `<img src="${event.image_url}" 
+            alt="${event.title}"
+            class="event-image"
+            />`: ''}
+          </figure>
+          <div class="attending-event-content">
+            <div class="attending-event-details">
+              <h3>${event.title}</h3>
+              <p><i class="fa-solid fa-location-dot"></i>${event.location}</p>
+              <ul class="attending-event-tags">
+                <li>
+                  <small class="event-category"><i class="fa-solid fa-icons"></i>${event.category}</small>
+                </li>
+                <li>
+                  <small class="event-category"><i class="fa-solid fa-ticket"></i>${event.event_access}</small>
+                </li> 
+              </ul>
+            </div>
+          </div>
+        </a>
         <div class="post-actions">
           <button class="save-btn">
             <i class="far fa-bookmark" title="Save"></i>

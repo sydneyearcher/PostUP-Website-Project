@@ -1,28 +1,46 @@
 // Check if the user is returning from signup
+// const returningUser = sessionStorage.getItem("returningUser");
+
+// Wait for the page to fully load before transitioning
+document.addEventListener('DOMContentLoaded', async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const eventId = urlParams.get('id');
+
+  if (!eventId) {
+    window.location.href = '../main/explore.html';
+    return;
+  }
+
+  document.querySelector(".back-btn").addEventListener("click", () => {
+    handleToEventOVRedirect(eventId);
+  });
+
+  document.querySelector(".cancel-btn").addEventListener("click", function () {
+    handleToEventOVRedirect(eventId); // Redirect back to the profile page
+  });
+
+  // try {
+  //     let event = await fetchOneEventData(eventId);
+  //     if (event){
+  //       // populateEventData(event);
+        
+  //     }
+  // } catch (error) {
+  //     console.error('Error fetching event:', error);
+  //     // Redirect or show error message
+  // }
+
+  document.querySelector('#form').addEventListener('submit', (e) => handleChangeEvent(e, eventId));
+});
 
 // Handle "Back to Login" button click on signup.html
 
-
-const backToProfileButton = document.querySelector(".back-btn");
-if (backToProfileButton) {
-  backToProfileButton.addEventListener("click", () => {
-    window.location.href = "../main/profile.html";
-  });
-}
-
+function handleToEventOVRedirect(eventId) {
+  window.location.href = `./eventOV.html?id=${eventId}`;
+};
 
 // Handle "Profile" button on explore.html
 document.addEventListener("DOMContentLoaded", function () {
-    const now = new Date();
-
-    // Format date as yyyy-mm-dd
-    const date = now.toISOString().split('T')[0];
-    document.getElementById('event-date').value = date;
-
-    // Format time as hh:mm
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    document.getElementById('event-time').value = `${hours}:${minutes}`;
 
     const fileInput = document.querySelector('.custom-file-input');
   const fileNameDisplay = document.querySelector('.file-name-display');
@@ -37,12 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-    
-  document.querySelector('#form').addEventListener('submit', handleEvent);
+  
 });
 
 // edit profile
-async function handleEvent(event) {
+async function handleChangeEvent(event, eventId) {
   event.preventDefault();
 //   console.log("sign up", event);
 
@@ -72,20 +89,22 @@ async function handleEvent(event) {
 //   let loggedInUser = await checkUser();
 //   let loggedInUserId = loggedInUser.user.id;
 
-    let createdEvent = await handleCreateEvent(title, datetime, category, location, description, access);
-    console.log("created event", createdEvent.id);
+    let fetchedEvent = await fetchOneEventData(eventId);
+
+    let updatedEvent = await handleUpdateEventInfo(fetchedEvent, title, datetime, category, location, description, access);
+    console.log("update event", updatedEvent.id);
 //   // Upload profile picture if a file was selected
     if (location) {
-      await updateEventLocation(createdEvent.id, location)
+      await updateEventLocation(updatedEvent.id, location)
     }
     let eventPicUrl = null;
     if (eventPicInput.files && eventPicInput.files.length > 0) {
-        eventPicUrl = await handleUploadEventPicture(eventPicInput.files[0], createdEvent.id);
+        eventPicUrl = await handleUploadEventPicture(eventPicInput.files[0], updatedEvent.id);
 
         console.log("pfp url ", eventPicUrl);
-        const success = await handleUpdateEventPicture(eventPicUrl, createdEvent.id);
+        const success = await handleUpdateEventPicture(eventPicUrl, updatedEvent.id);
         if (success) {
-            window.location.href = "../main/profile.html";
+          window.location.href = `./eventOV.html?id=${updatedEvent.id}`;
         }
     }
     // eventPicUrl = await handleUpdateEventPicture(profilePicInput.files[0], createdEvent.id);
@@ -94,7 +113,7 @@ async function handleEvent(event) {
 }
 
 
-async function handleCreateEvent(title, datetime, category, location, description, access) {
+async function handleUpdateEventInfo(fetchedEvent, title, datetime, category, location, description, access) {
   // console.log(fullname, username, location, bio); 
 
   console.log('Fetching data...');
@@ -118,7 +137,8 @@ async function handleCreateEvent(title, datetime, category, location, descriptio
       // 2. If auth successful, create a profile in your custom profiles table
       const { data, error } = await _supabase
         .from('events')
-        .insert(updateData)
+        .update(updateData)
+        .eq('id', fetchedEvent.id)
         .select();
         if (error) {
             console.error('Error creating event:', error);

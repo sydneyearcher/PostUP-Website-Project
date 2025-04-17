@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Reward</title>
+    <link rel="stylesheet" href="../../css/global/navbar.css" />
+    <link rel="stylesheet" href="../../css/main_style/rewards.css" />
+    <link rel="stylesheet" href="../../css/global/globals.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  </head>
+  <body>
+    <!-- Logo Positioned Outside Navbar -->
+    <div class="nav-logo">
+      <a href="../../index.html"
+        ><img src="../../images/PostUp LOGO.png" alt="PostUP Logo"
+      /></a>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar-container">
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="explore.html" class="explore-nav-link"><i class="fas fa-compass"></i> EXPLORE</a></li>
+          <li><a href="saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
+          <li><a href="rewards.html" class="rewards-nav-link active"><i class="fas fa-gift"></i>REWARDS</a></li>
+          <li><a href="profile.html" class="profile-nav-link"><i class="fas fa-user"></i> PROFILE</a></li>
+          <!-- <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Saved reward Section -->
+     <!-- Main Rewards Container -->
+     <main class="rewards-container">
+      <h1 class="rewards-header">REWARDS CENTER</h1>
+      
+      <!-- Points Display -->
+      <div class="points-display">
+        <p class="points-label">YOUR CURRENT POINTS <i class="fas fa-coins"></i></p>
+        <h2 class="points-total">0</h2>
+        <p class="points-expiry"><i class="fas fa-clock"></i> 500 points expire in 30 days</p>
+      </div>
+      
+      <!-- Scanner Section -->
+      <!-- implement in future
+      <div class="scanner-section">
+        <h2><i class="fas fa-qrcode"></i> SCAN TO EARN OR REDEEM</h2>
+        <div class="scanner-placeholder">
+          <i class="fas fa-camera"></i>
+          <p>Tap to scan a QR code</p>
+        </div>
+        <button class="scan-btn" id="scanButton">
+          <i class="fas fa-qrcode"></i> SCAN CODE
+        </button>
+      </div> -->
+
+      <!-- Rewards Tabs -->
+      <ul class="rewards-tabs">
+        <li>
+          <button class="tab-button active-tab" data-tab="catalog">Rewards</button>
+        </li>
+        <li>
+          <button class="tab-button" data-tab="redemptions">Redemptions</button>
+        </li>
+        <li>
+          <button class="tab-button" data-tab="history">Points History</button>
+        </li>
+        <li>
+          <button class="tab-button" data-tab="achievements">Achievements</button>
+        </li>
+      </ul>
+
+      <!-- Rewards Catalog Tab -->
+      <section class="tab-content active" id="catalog">
+        <div class="rewards-catalog" id="rewards-catalog">
+          <!-- Reward Cards -->
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/freecoffee.jpg" alt="Free Coffee Reward">
+            </div>
+            <div class="reward-details">
+              <h3>Free Medium Coffee</h3>
+              <p>Enjoy a complimentary medium coffee of your choice at any PostUP location.</p>
+              <div class="points-cost">500 POINTS</div>
+              <button class="redeem-btn">REDEEM REWARD</button>
+            </div>
+          </div>
+          
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/voucher.jpg" alt="Event Discount Reward">
+            </div>
+            <div class="reward-details">
+              <h3>20% Off Event Tickets</h3>
+              <p>Get 20% off your next event booking through the PostUP platform.</p>
+              <div class="points-cost">1,200 POINTS</div>
+              <button class="redeem-btn">REDEEM REWARD</button>
+            </div>
+          </div>
+          
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/premium.jpg" alt="Premium Membership Reward">
+            </div>
+            <div class="reward-details">
+              <h3>1 Month Premium Membership</h3>
+              <p>Unlock premium features and exclusive events for one month.</p>
+              <div class="points-cost">2,000 POINTS</div>
+              <button class="redeem-btn">REDEEM REWARD</button>
+            </div>
+          </div>
+          
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/vip.jpg" alt="VIP Experience Reward">
+            </div>
+            <div class="reward-details">
+              <h3>VIP Event Experience</h3>
+              <p>Upgrade to VIP access at a participating PostUP event.</p>
+              <div class="points-cost">3,500 POINTS</div>
+              <button class="redeem-btn disabled">NOT ENOUGH POINTS</button>
+            </div>
+          </div>
+          
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/postupmug.jpg" alt="Merchandise Reward">
+            </div>
+            <div class="reward-details">
+              <h3>PostUP Branded Mug</h3>
+              <p>Get a limited edition PostUP ceramic mug, perfect for your coffee.</p>
+              <div class="points-cost">800 POINTS</div>
+              <button class="redeem-btn">REDEEM REWARD</button>
+            </div>
+          </div>
+          
+          <div class="reward-card">
+            <div class="reward-image">
+              <img src="../../images/rewardcardthumbnails/restaurant.jpg" alt="Partner Reward">
+            </div>
+            <div class="reward-details">
+              <h3>Partner Restaurant Voucher</h3>
+              <p>$25 voucher for use at any of our partner restaurants.</p>
+              <div class="points-cost">2,500 POINTS</div>
+              <button class="redeem-btn disabled">NOT ENOUGH POINTS</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Redemption History Tab -->
+      <section class="tab-content" id="redemptions">
+        <h2 class="events-header">YOUR REDEMPTION HISTORY</h2>
+        <div class="redemption-history" id="redemption-history">
+          <div class="history-item redeemed">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-gift"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Free Medium Coffee</h4>
+                <p>Redeemed on April 10, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">-500 pts</div>
+          </div>
+          
+          <div class="history-item redeemed">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-gift"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>20% Off Event Tickets</h4>
+                <p>Redeemed on March 28, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">-1,200 pts</div>
+          </div>
+          
+          <div class="history-item redeemed">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-gift"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>PostUP Branded Mug</h4>
+                <p>Redeemed on March 12, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">-800 pts</div>
+          </div>
+        </div>
+      </section>
+
+       <!-- Points History Tab -->
+       <section class="tab-content" id="history">
+        <h2 class="events-header">YOUR POINTS HISTORY</h2>
+        <div class="points-history" id="points-history">
+          <div class="history-item earned">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Event Check-in: Downtown Music Festival</h4>
+                <p>April 12, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">+150 pts</div>
+          </div>
+          
+          <div class="history-item redeemed">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-minus"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Reward Redemption: Free Medium Coffee</h4>
+                <p>April 10, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">-500 pts</div>
+          </div>
+          
+          <div class="history-item earned">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Purchased Event Tickets: Comedy Night</h4>
+                <p>April 5, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">+300 pts</div>
+          </div>
+          
+          <div class="history-item earned">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Referral Bonus: New User Signup</h4>
+                <p>April 2, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">+500 pts</div>
+          </div>
+          
+          <div class="history-item earned">
+            <div class="history-item-left">
+              <div class="history-icon">
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="history-item-details">
+                <h4>Monthly Login Bonus</h4>
+                <p>April 1, 2025</p>
+              </div>
+            </div>
+            <div class="history-item-points">+100 pts</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievements Tab -->
+      <section class="tab-content" id="achievements">
+        <h2 class="events-header">YOUR ACHIEVEMENTS</h2>
+        <div class="badges-container">
+          <div class="badge earned" title="First Event">
+            <i class="fas fa-calendar-check"></i>
+            <small>First Event</small>
+          </div>
+          <div class="badge earned" title="Social Butterfly">
+            <i class="fas fa-users"></i>
+            <small>Social</small>
+          </div>
+          <div class="badge earned" title="Early Bird">
+            <i class="fas fa-clock"></i>
+            <small>Early Bird</small>
+          </div>
+          <div class="badge" title="Super Fan">
+            <i class="fas fa-star"></i>
+            <small>Super Fan</small>
+          </div>
+          <div class="badge" title="Explorer">
+            <i class="fas fa-compass"></i>
+            <small>Explorer</small>
+          </div>
+          <div class="badge earned" title="Loyal Member">
+            <i class="fas fa-medal"></i>
+            <small>Loyal</small>
+          </div>
+          <div class="badge" title="Influencer">
+            <i class="fas fa-bullhorn"></i>
+            <small>Influencer</small>
+          </div>
+          <div class="badge" title="VIP Status">
+            <i class="fas fa-crown"></i>
+            <small>VIP</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/util/getProfile.js"></script>
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/features/rewards.js"></script>
+  </body>
+</html>

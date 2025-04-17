@@ -1,0 +1,407 @@
+@import url("./../global/globals.css");
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Flex', sans-serif;
+  background-color: #ECE4D6;
+  color: #333;
+  height: 100vh;
+  min-height: 140vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  transition: background-color 0.5s ease;
+  padding-top: 80px;
+}
+
+p i, small i {
+  margin-right: 0.25rem;
+}
+
+/* Rewards Container */
+.rewards-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 40px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.rewards-header {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 20px;
+}
+
+/* Points Display */
+.points-display {
+  background: #fff;
+  border-radius: 15px;
+  border: 2px solid black;
+  padding: 25px;
+  margin: 0 auto 30px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.points-total {
+  font-family: 'Anton', sans-serif;
+  font-size: 3.5rem;
+  color: #000;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.points-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.points-expiry {
+  font-size: 0.9rem;
+  color: #ff5757;
+  margin-top: 10px;
+}
+
+/* Scanner Section */
+.scanner-section {
+  background: #faf2e8;
+  border-radius: 15px;
+  border: 2px solid black;
+  padding: 30px;
+  margin: 0 auto 30px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.scanner-placeholder {
+  width: 100%;
+  height: 250px;
+  background: #f5efe6;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.scanner-placeholder i {
+  font-size: 3rem;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.scan-btn {
+  font-family: 'Oswald', sans-serif;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scan-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Tab Navigation */
+.rewards-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+  list-style: none;
+}
+
+.tab-button {
+  font-family: 'Oswald', sans-serif;
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+  
+.tab-button.active-tab {
+  border-bottom: 7px solid #000;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+}
+  
+.tab-content.active {
+  display: block;
+}
+
+/* Rewards Cards Container */
+.rewards-catalog, .redemption-history, .points-history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Reward Card */
+.reward-card {
+  width: calc(33.33% - 20px);
+  min-width: 280px;
+  max-width: 350px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 2px solid black;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.reward-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.reward-image {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.reward-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.reward-card:hover img {
+  transform: scale(1.05);
+}
+
+.reward-details {
+  padding: 20px;
+  text-align: left;
+}
+
+.reward-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #222;
+  line-height: 1.2;
+}
+
+.reward-card p {
+  font-size: 0.9rem;
+  margin: 8px 0;
+  color: #555;
+}
+
+.points-cost {
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #000;
+  background-color: #ffe2b9;
+  padding: 8px 15px;
+  border-left: 3px solid #ff5757;
+  margin: 15px 0;
+}
+
+.redeem-btn {
+  display: block;
+  width: 100%;
+  font-family: 'Oswald', sans-serif;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.redeem-btn:hover {
+  background: #333;
+}
+
+.redeem-btn.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* History Items */
+.history-item {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.history-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.earned .history-icon {
+  background: #e3f8e3;
+  color: #28a745;
+}
+
+.redeemed .history-icon {
+  background: #ffe0e0;
+  color: #ff5757;
+}
+
+.history-item-details h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
+}
+
+.history-item-details p {
+  font-size: 0.8rem;
+  color: #777;
+  margin: 0;
+}
+
+.history-item-points {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.earned .history-item-points {
+  color: #28a745;
+}
+
+.redeemed .history-item-points {
+  color: #ff5757;
+}
+
+/* Achievement Badges */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.badge {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.badge i {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.badge.earned {
+  border-color: #ffd700;
+  background: #fffae6;
+}
+
+.badge.earned i {
+  color: #ffa500;
+}
+
+/* Empty Message */
+.empty-message {
+  font-size: 1.2rem;
+  color: #000000;
+  margin-top: 50px;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rewards-container {
+    padding: 20px;
+    margin-top: 0;
+    padding-bottom: 100px;
+  }
+  
+  .rewards-tabs {
+    width: 90%;
+    margin: 10px auto;
+  }
+  
+  .tab-button {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .reward-card {
+    width: 100%;
+  }
+
+  .scanner-section {
+    padding: 20px;
+  }
+
+  .scanner-placeholder {
+    height: 200px;
+  }
+
+  .points-total {
+    font-size: 2.8rem;
+  }
+}

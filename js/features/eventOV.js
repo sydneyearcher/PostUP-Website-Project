@@ -33,10 +33,40 @@ function populateEventData(event) {
     document.getElementById('event-category').textContent = event.category;
     document.getElementById('event-location').textContent = event.location;
 
-    document.getElementById('event-image').src = event.image_url;
+    document.getElementById('event-image').src = event.image_url; 
     
     // Update other elements similarly
     document.querySelector('.buy-tickets-btn').addEventListener('click', () => {
         window.location.href = `../tickets/ticket.html?id=${event.id}`;
     });
+
+    document.querySelector('.edit-btn').addEventListener('click', () => {
+        window.location.href = `./editevent.html?id=${event.id}`;
+    });
+
+    document.getElementById('event-description').textContent = event.description;
+
+    document.getElementById('address').textContent = event.location;
+
+    const eventtime = new Date(event.datetime).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+
+    document.getElementById('event-time').textContent = `Doors open at ${eventtime}`;
+
+    // Get the address from your dynamic source
+    const address = document.getElementById('address').textContent.trim();
+
+    // URL encode the address
+    const encodedAddress = encodeURIComponent(address);
+
+    // Construct the Google Maps URL
+    const apiKey = 'AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk';
+    const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`;
+
+    // Update the iframe
+    document.getElementById('dynamicMap').src = mapUrl;
 }
+

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostUP - Profile Settings</title>
+    <!-- <link rel="stylesheet" href="../../css/global/navbar.css" /> -->
+     <link rel="stylesheet" href="../../css/global/navbar.css" />
+     <link rel="stylesheet" href="../../css/global/globals.css" />
+    <link rel="stylesheet" href="../../css/profile_style/profilesettings.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk&libraries=places&callback=initAutocomplete">
+    </script>
+  </head>
+  <body>
+      <!-- Logo Positioned Outside Navbar -->
+  <div class="nav-logo">
+    <a href="../main/index.html"><img src="../../images/PostUp LOGO.png" alt="PostUP Logo" /></a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-container">
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="../main/explore.html" class="explore-nav-link"><i class="fas fa-compass"></i> EXPLORE</a></li>
+        <li><a href="../main/saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
+        <li><a href="../main/rewards.html" class="rewards-nav-link"><i class="fas fa-gift"></i>REWARDS</a></li>
+        <li><a href="../main/profile.html" class="profile-nav-link active"><i class="fas fa-user"></i> PROFILE</a></li>
+        <!-- <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li> -->
+      </ul>
+    </nav>
+  </header>
+  
+  <main class="main-content">
+
+  <!-- Mobile section title - dynamically updated -->
+  <div class="mobile-section-title">
+
+    <h1>PROFILE SETTINGS</h1>
+     <!-- Mobile menu toggle -->
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+  </div>
+
+  <!-- Settings Container (Sidebar + Content) -->
+  <div class="settings-container">
+    <!-- Settings Sidebar -->
+    <aside class="settings-sidebar">
+      <div class="user-quick-info">
+        <a href="../main/profile.html">
+        <figure class="user-profile-picture">
+          <img src="../../images/profileicon.png" alt="Profile Picture" />
+        </figure>
+        <div class="user-content">
+          <div class="user-info">
+            <h3 class="profile-name">JOHN DOE</h3>
+            <p class="profile-location">ORLANDO, FL</p>
+          </div>
+            <div class="to-profile-icon">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+        </a>
+      </div>
+      <ul class="settings-nav">
+        <li><a href="#profile-info" class="settings-link active" data-section="profile-info"><i class="fas fa-user"></i> Profile Information</a></li>
+        <li><a href="#account" class="settings-link" data-section="account"><i class="fas fa-lock"></i> Account & Security</a></li>
+        <li><a href="#preferences" class="settings-link" data-section="preferences"><i class="fas fa-heart"></i> Preferences</a></li>
+        <li><a href="#notifications" class="settings-link" data-section="notifications"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li><a href="#privacy" class="settings-link" data-section="privacy"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+      </ul>
+    </aside>
+
+    <!-- Settings Content Area -->
+    <section class="settings-content">
+      <!-- Profile Information Section -->
+      <form id="profile-info" class="settings-section active">
+        <h2>Profile Information</h2>
+        <p>Update your profile details to help others find and connect with you.</p>
+        
+        <fieldset class="form-field">
+          <label for="edituser-full-name">FULL NAME</label>
+          <input type="text" id="edituser-full-name" name="name" placeholder="Enter your full name..."  />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-username">USERNAME</label>
+          <input type="text" id="edituser-username" name="username" placeholder="Enter your username..." />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-city">CITY</label>
+          <input type="text" id="edituser-city" name="city" placeholder="Enter your city here..." />
+          <div id="googlemaps-location">
+            
+          </div>  
+        </fieldset>
+
+        <fieldset class="form-field">
+          <label for="edituser-distance">DISTANCE</label>
+          <input type="range" id="edituser-event-distance" name="edituser-event-distance" min="0" max="62" step="1" value="31" class="slider">
+          <p id="edituser-event-distance-text">Distance: 31 miles</p>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-state">STATE</label>
+          <select id="edituser-state" name="state">
+            <option value="">Select your state...</option>
+              <option value="Alabama">Alabama</option>
+              <option value="Alaska">Alaska</option>
+              <option value="Arizona">Arizona</option>
+              <option value="Arkansas">Arkansas</option>
+              <option value="California">California</option>
+              <option value="Colorado">Colorado</option>
+              <option value="Connecticut">Connecticut</option>
+              <option value="Delaware">Delaware</option>
+              <option value="Florida">Florida</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Hawaii">Hawaii</option>
+              <option value="Idaho">Idaho</option>
+              <option value="Illinois">Illinois</option>
+              <option value="Indiana">Indiana</option>
+              <option value="Iowa">Iowa</option>
+              <option value="Kansas">Kansas</option>
+              <option value="Kentucky">Kentucky</option>
+              <option value="Louisiana">Louisiana</option>
+              <option value="Maine">Maine</option>
+              <option value="Maryland">Maryland</option>
+              <option value="Massachusetts">Massachusetts</option>
+              <option value="Michigan">Michigan</option>
+              <option value="Minnesota">Minnesota</option>
+              <option value="Mississippi">Mississippi</option>
+              <option value="Missouri">Missouri</option>
+              <option value="Montana">Montana</option>
+              <option value="Nebraska">Nebraska</option>
+              <option value="Nevada">Nevada</option>
+              <option value="New Hampshire">New Hampshire</option>
+              <option value="New Jersey">New Jersey</option>
+              <option value="New Mexico">New Mexico</option>
+              <option value="New York">New York</option>
+              <option value="North Carolina">North Carolina</option>
+              <option value="North Dakota">North Dakota</option>
+              <option value="Ohio">Ohio</option>
+              <option value="Oklahoma">Oklahoma</option>
+              <option value="Oregon">Oregon</option>
+              <option value="Pennsylvania">Pennsylvania</option>
+              <option value="Rhode Island">Rhode Island</option>
+              <option value="South Carolina">South Carolina</option>
+              <option value="South Dakota">South Dakota</option>
+              <option value="Tennessee">Tennessee</option>
+              <option value="Texas">Texas</option>
+              <option value="Utah">Utah</option>
+              <option value="Vermont">Vermont</option>
+              <option value="Virginia">Virginia</option>
+              <option value="Washington">Washington</option>
+              <option value="West Virginia">West Virginia</option>
+              <option value="Wisconsin">Wisconsin</option>
+              <option value="Wyoming">Wyoming</option>
+          </select>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-bio">BIO</label>
+          <textarea id="edituser-bio" name="bio" rows="5" value="bio" placeholder="Enter bio here..."></textarea>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="profile-pic">PROFILE PICTURE</label>
+          <input type="file" id="profile-pic" name="profile-pic" class="custom-file-input" />
+          <label for="profile-pic" class="file-input-label">CHOOSE FILE</label>
+          <div class="file-name-display">No file chosen</div>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        </fieldset>
+
+        <fieldset class="form-actions">
+          <button type="button" class="cancel-btn">CANCEL</button>
+          <button type="submit" class="save-btn">SAVE CHANGES</button>
+        </fieldset>
+      </form>
+
+      <!-- Account & Security Section -->
+      <form id="account" class="settings-section">
+        <h2>Account & Security</h2>
+        <p>Manage your account details and security preferences.</p>
+        
+        <fieldset class="form-field">
+          <label for="edituser-email">EMAIL</label>
+          <input type="email" id="edituser-email" name="email" placeholder="Enter your email here..."  />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-phone-number">PHONE NUMBER</label>
+          <input type="tel" id="edituser-phone-number" name="phone-number" placeholder="Enter your phone number..."  />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="user-password">CURRENT PASSWORD</label>
+          <input type="password" id="user-password" name="password" placeholder="Enter your current password..." />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="edituser-password">NEW PASSWORD</label>
+          <input type="password" id="edituser-password" name="password" placeholder="Enter your password here..."  />
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label for="user-confirm-password">CONFIRM NEW PASSWORD</label>
+          <input type="password" id="user-confirm-password" name="confirm-password" placeholder="Confirm new password..." />
+        </fieldset>
+        
+        <fieldset class="form-actions">
+          <button type="button" class="cancel-btn">CANCEL</button>
+          <button type="button" class="save-btn">SAVE CHANGES</button>
+        </fieldset>
+      </form>
+
+      <!-- Preferences Section -->
+      <form id="preferences" class="settings-section">
+        <h2>Preferences</h2>
+        <p>Select your preferences to get personalized event recommendations.</p>
+        
+        <fieldset class="preference-category">
+          <legend>EVENTS</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Music" type="button">LIVE<br>MUSIC</button>
+            <button class="preference-option" data-value="Food" type="button">FOOD<br>MARKETS</button>
+            <button class="preference-option" data-value="Art" type="button">ART<br>MARKETS</button>
+            <button class="preference-option" data-value="Festivals" type="button">FESTIVALS</button>
+            <button class="preference-option" data-value="Sports" type="button">SPORTING<br>EVENTS</button>
+            <button class="preference-option" data-value="Other" type="button">OTHER</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="preference-category">
+          <legend>MUSIC</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Rock" type="button">ROCK</button>
+            <button class="preference-option" data-value="Pop" type="button">POP</button>
+            <button class="preference-option" data-value="Hip-Hop" type="button">HIP-HOP</button>
+            <button class="preference-option" data-value="Jazz" type="button">JAZZ</button>
+            <button class="preference-option" data-value="Classical" type="button">CLASSICAL</button>
+            <button class="preference-option" data-value="Electronic" type="button">ELECTRONIC</button>
+            <button class="preference-option" data-value="Country"type="button">COUNTRY</button>
+            <button class="preference-option" data-value="Other"type="button">OTHER</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="preference-category">
+          <legend>FOOD</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Pizza" type="button">PIZZA</button>
+            <button class="preference-option" data-value="Burgers" type="button">BURGERS</button>
+            <button class="preference-option" data-value="Sushi" type="button">SUSHI</button>
+            <button class="preference-option" data-value="Tacos" type="button">TACOS</button>
+            <button class="preference-option" data-value="Salads" type="button">SALADS</button>
+            <button class="preference-option" data-value="Pasta" type="button">PASTA</button>
+            <button class="preference-option" data-value="Desserts" type="button">DESSERTS</button>
+            <button class="preference-option" data-value="Vegan" type="button">VEGAN</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="preference-category">
+          <legend>CUISINE</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Italian" type="button">ITALIAN</button>
+            <button class="preference-option" data-value="Mexican" type="button">MEXICAN</button>
+            <button class="preference-option" data-value="Chinese" type="button">CHINESE</button>
+            <button class="preference-option" data-value="Indian" type="button">INDIAN</button>
+            <button class="preference-option" data-value="Japanese" type="button">JAPANESE</button>
+            <button class="preference-option" data-value="Thai" type="button">THAI</button>
+            <button class="preference-option" data-value="Greek" type="button">GREEK</button>
+            <button class="preference-option" data-value="American" type="button">AMERICAN</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="preference-category">
+          <legend>ART</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Painting" type="button">PAINTING</button>
+            <button class="preference-option" data-value="Sculpture" type="button">SCULPTURE</button>
+            <button class="preference-option" data-value="Photography" type="button">PHOTO-<br>GRAPHY</button>
+            <button class="preference-option" data-value="Graffiti" type="button">GRAFFITI</button>
+            <button class="preference-option" data-value="Dance" type="button">DANCE</button>
+            <button class="preference-option" data-value="Theater" type="button">THEATER</button>
+            <button class="preference-option" data-value="Literature" type="button">LITERATURE</button>
+            <button class="preference-option" data-value="Film" type="button">FILM</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="preference-category">
+          <legend>ART STYLE</legend>
+          <div class="preference-options">
+            <button class="preference-option" data-value="Abstract" type="button">ABSTRACT</button>
+            <button class="preference-option" data-value="Realism" type="button">REALISM</button>
+            <button class="preference-option" data-value="Impressionism" type="button">IMPRESSION-<br>ISM</button>
+            <button class="preference-option" data-value="Cubism" type="button">CUBISM</button>
+            <button class="preference-option" data-value="Surrealism" type="button">SURREALISM</button>
+            <button class="preference-option" data-value="Pop Art" type="button">POP ART</button>
+            <button class="preference-option" data-value="Street Art" type="button">STREET ART</button>
+            <button class="preference-option" data-value="Minimalism" type="button">MINIMALISM</button>
+          </div>
+        </fieldset>
+        
+        <fieldset class="form-actions">
+          <button type="button" class="cancel-btn">CANCEL</button>
+          <button type="submit"  class="save-btn">SAVE CHANGES</button>
+        </fieldset>
+      </form>
+
+      <!-- Notifications Section -->
+      <form id="notifications" class="settings-section">
+        <h2>Notifications</h2>
+        <p>Control how and when you receive notifications about events and activity.</p>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="notify-new-events" checked>
+            Notify me about new events in my area
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="notify-messages" checked>
+            Notify me about new messages
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="notify-reminders">
+            Send me event reminders
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="notify-email" checked>
+            Receive email notifications
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="notify-push" checked>
+            Receive push notifications
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-actions">
+          <button type="button" class="cancel-btn">CANCEL</button>
+          <button type="button" class="save-btn">SAVE CHANGES</button>
+        </fieldset>
+      </form>
+
+      <!-- Privacy Section -->
+      <form id="privacy" class="settings-section">
+        <h2>Privacy</h2>
+        <p>Manage your privacy settings and control who can see your profile and activity.</p>
+        
+        <fieldset class="form-field">
+          <label for="profile-visibility">PROFILE VISIBILITY</label>
+          <select id="profile-visibility" name="profile-visibility">
+            <option value="public">Public - Anyone can see my profile</option>
+            <option value="friends">Friends Only - Only people I connect with can see my profile</option>
+            <option value="private">Private - My profile is hidden from everyone</option>
+          </select>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="show-location" checked>
+            Show my location on my profile
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="show-attended">
+            Show events I've attended on my profile
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-field">
+          <label>
+            <input type="checkbox" id="show-preferences" checked>
+            Show my preferences on my profile
+          </label>
+        </fieldset>
+        
+        <fieldset class="form-actions">
+          <button type="button" class="cancel-btn">CANCEL</button>
+          <button type="button" class="save-btn">SAVE CHANGES</button>
+        </fieldset>
+      </form>
+    </section>
+  </div>
+  </main>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/util/getProfile.js"></script>
+    <script src="../../js/auth/logout.js"></script>
+    <script src="../../js/user/profilesettings.js"></script>
+  </body>
+</html>

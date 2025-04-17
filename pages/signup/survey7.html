@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PostUP - Survey</title>
-    <link rel="stylesheet" href="../../css/signup_style/survey7.css" />
+    <link rel="stylesheet" href="../../css/signup_style/survey.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
   <body>
     <!-- Logo Positioned Outside Navbar -->
@@ -16,7 +17,7 @@
       <a href="../main/index.html"><img src="../../images/PostUp LOGO.png" alt="PostUP Logo" /></a>
     </div>
 
-    <form class="survey-form">
+    <form class="survey-form" id="distance-form">
       <!-- Survey Box with Border -->
       <div class="survey-box">
         <!-- How Often Question -->
@@ -38,7 +39,7 @@
         <div class="form-actions">
           <!-- Button to move to next page -->
           <a href="../main/profile.html">
-            <button type="submit" class="submit-btn" data-href="../main/profile.html">SUBMIT</button>
+            <button type="submit" class="submit-btn" id="createPreferenceBtn" data-href="../main/profile.html">SUBMIT</button>
           </a>
 
           <!-- Button to go back to the previous page -->
@@ -48,7 +49,9 @@
         </div>
       </div>
     </form>
-
-    <script src="../../js/scripts.js"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../js/util/checkUser.js"></script>
+    <script src="../../js/util/getProfile.js"></script>
+    <script src="../../js/other/survey.js"></script>
   </body>
 </html>

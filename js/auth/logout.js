@@ -3,7 +3,6 @@
 // Get the supabase instance that was initialized in supabase.js
 async function handleLogout(e) {
     e.preventDefault();
-    
     console.log("logout", e.target);
 
     // 1. First, create user in Supabase Auth

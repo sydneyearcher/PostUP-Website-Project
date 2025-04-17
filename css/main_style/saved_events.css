@@ -143,6 +143,11 @@ p i, small i {
   position: relative;
 }
 
+a {
+  text-decoration: none;  /* Remove underline */
+  color: inherit;         /* Inherit color from parent element */
+}
+
 .ticket-body {
   padding: 20px;
 }

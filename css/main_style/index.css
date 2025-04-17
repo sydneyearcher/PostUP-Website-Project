@@ -7,11 +7,15 @@
     box-sizing: border-box;
 }
 
+main {
+    padding-bottom: 0px !important;
+}
+
 body {
     font-family: 'Roboto Flex', sans-serif;
     background-color: #ECE4D6;
     color: #333;
-    min-height: 120vh; 
+    min-height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +50,9 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 400px;
+    min-width: 50vw;
+    max-width: 500px;
+    min-height: 100vh;
     opacity: 0; /* Start with invisible content */
     transition: opacity 1s ease-in-out;
 }
@@ -62,11 +68,11 @@ h1 {
     font-family: 'Anton', sans-serif;
     font-weight: bold; /* Bold text */
     font-size: 2.5rem;
-    margin-bottom: 40px;
     color: black;
     text-align: center; /* Ensure it's centered */
     white-space: nowrap; /* Prevent the text from wrapping to the next line */
     overflow: hidden; /* Hide overflowed content */
+    margin-bottom: 40px;
     text-overflow: ellipsis; /* Show "..." if text overflows */
 }
 
@@ -75,6 +81,13 @@ h1 span {
     text-transform: uppercase; /* Capitalize each word */
     line-height: 1.2; /* Adjust line height for better spacing */
 }
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width:100%
+  }
 
 /* Specific Font Styling for Each Word */
 .whats-the {
@@ -124,29 +137,61 @@ h1 span {
     font-family: 'Oswald', sans-serif;
     font-size: 2.5rem;
     font-weight: bold; /* Make the text bold */
-    margin-bottom: 20px;
     color: rgb(0, 0, 0);
 }
 
-/* Input Fields */
-.input-field {
-    display: block; /* Ensure input fields are on separate lines */
-    font-family: 'Anton', sans-serif;
-    width: 100%;
-    max-width: 350px; /* Shorter width for input fields */
-    padding: 12px;
-    margin: 15px 0;
+
+
+/* Form styling */
+.form-field {
+    text-align: left;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .form-field label {
+    font-weight: 600;
+    color: #000000;
+    display: block;
     font-size: 1rem;
-    border: 2.5px solid #000;
-    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .form-field input, 
+  .form-field select, 
+  .form-field textarea {
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
     background-color: #f7f7f7;
-    color: #1a1a1a;
-    /*text-transform: uppercase;  Capitalize text inside inputs */
-    max-height: 50px; /* Limit height to prevent excessive field size */
-}
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .form-field input:focus, 
+  .form-field select:focus, 
+  .form-field textarea:focus {
+    outline: 2px solid;
+    outline-color: #faa019;
+  }
+
+  
 
 /* Buttons */
 .btn {
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: black;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase; /* Capitalize button text */
+}
+
+button.btn {
     font-family: 'Anton', sans-serif;
     padding: 12px 25px;
     font-size: 1.2rem;
@@ -155,34 +200,50 @@ h1 span {
     cursor: pointer;
     background-color: #fdbd5e;
     color: black;
-    transition: background-color 0.3s ease;
-    margin: 10px;
+    transition: all 0.3s ease;
     width: 100%;
     max-width: 300px;
     text-transform: uppercase; /* Capitalize button text */
 }
 
-.btn:hover {
-    background-color: rgb(255, 184, 77);
+button.btn:hover, button.btn:active {
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 184, 77);
 }
 
-.btn:active {
-    background-color: rgb(255, 184, 77);
+a.btn:hover, a.btn:active {
+    color: rgb(0, 0, 0);
 }
 
 /* Form Container Centering */
 #signUpForm, #loginForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 350px;
-    padding: 20px;
+    max-width: 300px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
     background-color: #ECE4D6;
     margin: 0 auto;
     box-sizing: border-box;
     height: 100%; /* Allow full height */
+    gap: 0.5rem;
+}
+
+#loginForm {
+    max-height: 300px;
+}
+
+.submit-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    margin-top: 20px;
 }
 
 /* Space Between Input Fields */
@@ -205,8 +266,14 @@ h1 span {
     margin-top: 10px;
 }
 
+a.btn{
+    display:block;
+    text-align: center;
+    color: #454545;
+}
+
 /* Space between buttons */
-a.btn, a.back-to-login, button.btn {
+ button.btn {
     font-family: 'Anton', sans-serif;
     padding: 12px 25px;
     font-size: 1.2rem;
@@ -217,7 +284,6 @@ a.btn, a.back-to-login, button.btn {
     color: black;
     text-decoration: none; /* Remove underline */
     transition: background-color 0.3s ease;
-    margin: 10px;
     width: 100%;
     max-width: 300px;
     text-transform: uppercase;
@@ -229,7 +295,7 @@ a.back-to-login {
 }
 
 a.btn:hover, a.back-to-login:hover, button.btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.015);
 }
 
 a.btn:active, a.back-to-login:active, button.btn:active {

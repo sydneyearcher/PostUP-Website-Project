@@ -42,13 +42,18 @@ async function fetchuserData (profileContainer) {
             </p>
 
             <div class="profile-buttons">
-                <a href="../profile/editprofile.html" class="profile-btn">EDIT PROFILE</a>
-                <a href="../profile/create.html" class="profile-btn">CREATE EVENT</a>
+                <a href="../profile/profilesettings.html" class="profile-btn"><i class="fas fa-user-gear"></i> PROFILE SETTINGS</a>
+                <a href="../profile/create.html" class="profile-btn"><i class="fas fa-square-plus"></i> CREATE EVENT</a>
             </div>
             `;
 
         // Insert HTML
         profileContainer.insertAdjacentHTML('beforeend', html_to_insert);
+
+        document.querySelector('.profile-attended-events-counter').textContent = loggedInUserProfile.attended_events_count;
+        document.querySelector('.profile-points-counter').textContent = loggedInUserProfile.current_point_balance;
+        document.querySelector('.profile-followers-counter').textContent = loggedInUserProfile.follower_count;
+
 
       }
     
@@ -135,3 +140,5 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchuserData(profileContainer);
 
 });
+
+

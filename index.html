@@ -32,15 +32,21 @@
 
       <!-- Login Form --><!-- Login Form -->
       <form id="loginForm" action="./pages/main/explore.html" method="POST">
-        <input class="input-field" type="text" placeholder="USERNAME" id="login-username" required />
-        <input class="input-field" type="password" placeholder="PASSWORD" id="login-password" required />
-
-        <button type="submit" class="btn" id="loginButton">LOGIN</button>
-      </form>
-      <!-- <a href="./pages/main/explore.html" class="btn" id="loginButton">LOGIN</a> -->
-      <!-- Separate Sign-Up Link -->
-      <a href="./pages/signup/signup.html" class="btn" id="signupButton">SIGN UP</a>
-
+        <fieldset class="form-field">
+          <label for="login-username">USERNAME</label>
+          <input class="input-field" type="text" placeholder="Enter your username..." id="login-username" required />
+        </fieldset>
+        <fieldset class="form-field">
+          <label for="login-password">PASSWORD</label>
+          <input class="input-field" type="password" placeholder="Enter your password..." id="login-password" required />
+        </fieldset>  
+        <fieldset class="form-field submit-btns">
+          <button type="submit" class="btn" id="loginButton">LOGIN</button>
+          <!-- <a href="./pages/main/explore.html" class="btn" id="loginButton">LOGIN</a> -->
+          <!-- Separate Sign-Up Link -->
+          <a href="./pages/signup/signup.html" class="btn" id="signupButton">SIGN UP</a>
+        </fieldset>
+        </form>
     </div>
   </main>
     <script src="./js/supabase.js"></script>

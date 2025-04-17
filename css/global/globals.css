@@ -57,6 +57,7 @@
 
     --nav-logo-width: 100px;
     --nav-logo-mobile-width: 80px;
+    --nav-logo-mobile-width-small: 48px;
     --nav-icon-size: 1.1rem;
   }
   
@@ -188,20 +189,37 @@
   @media (max-width: 768px) {
     .nav-logo {
       position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 0px;
+      left:0px;
+      /* transform: translateX(-50%); */
       z-index: 1000;
-      padding-top: 0px;
-      padding-left: 0px;
+      padding-top: 10px;
+      padding-left: 10px;
     }
   
     .nav-logo img {
-      width: var(--nav-logo-mobile-width);
+      width: var(--nav-logo-mobile-width-small);
       transition: width 0.3s ease;
     }
 
-    .explore-header, .events-header {
+    .events-header {
       font-size: 1.6rem;
       margin-top: 25px;
+    }
+    body {
+      padding-top: 0px !important;
+    }
+    main {
+      padding-top: 0px !important;
+      margin-top: 0px !important;
+    }
+
+    #event-title, .page-title{
+      font-size: 1.2rem;
+
+    }
+
+    #back-explore-btn {
+      font-size: 0.8rem;
     }
   }

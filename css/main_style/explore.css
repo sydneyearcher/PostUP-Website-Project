@@ -24,8 +24,16 @@ body {
     align-items: center;
     text-align: center;
     overflow-y: auto; /* Allow scrolling */
+    overflow-x: hidden;
     transition: background-color 0.5s ease;
     padding-top: 80px; /* Push content below navbar */
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 0px;
+  margin-top: 40px;
 }
 
 p i, small i {
@@ -34,12 +42,27 @@ p i, small i {
 
 /* Explore Page Header */
 .explore-header {
-    font-family: 'Oswald', sans-serif;
-    font-size: 2.5rem;
-    text-align: center;
-    margin-top: 50px; /* Space below navbar */
-    color: var(--color-black);
-    text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.explore-header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 0.5rem;
+  width:100%;
+  max-width: 800px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .loading-events-header {
@@ -57,11 +80,8 @@ p i, small i {
     align-items: center;
     align-self: center;
     gap: 10px;
-    margin-top: 20px; /* Space below header */
-    margin-bottom: 30px;
+    width:100%;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .search-bar {
@@ -75,7 +95,6 @@ p i, small i {
     border-radius: 20px;
     background-color: #f7f7f7;
     color: var(--color-border);
-    text-transform: uppercase;
     outline: none;
 }
 
@@ -112,14 +131,13 @@ p i, small i {
     transform: scale(1.05);
 }
 
-/* Ensure Links Don’t Mess with Layout */
-.filter-link {
-    text-decoration: none;  /* Remove underline */
-    color: inherit;  /* Inherit text color */
-    display: inline-block;  /* Prevents breaking the layout */
+/* filters */
+/* .filter-link {
+    text-decoration: none;
+    color: inherit; 
+    display: inline-block;
 }
 
-/* Maintain Original Filter Styling */
 .filter-item {
     display: flex;
     flex-direction: column;
@@ -130,27 +148,32 @@ p i, small i {
     transition: transform 0.3s ease;
 }
 
-/* Restore Hover Effect */
 .filter-item:hover  {
     transform: scale(1.03);
     transition: all 0.3 ease-in-out;
 }
 
 .filter-item:hover img {
-    background-color: var(--color-accent); /* Change this to the highlight color */
+    background-color: var(--color-accent); 
 }
-
+*/
 .active-filter-item {
     background-color: var(--color-accent);
-}
-
-/* Selected Filter Border */
+} 
 .filter-item.selected {
     border: 2px solid var(--color-accent);
     border-radius: 50%;
 }
 
-/* Keep Circular Icon Styling */
+.filter-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 80px;
+  min-width: 36px;
+}
+
+/*
 .filter-icon {
     width: 80px;
     height: 80px;
@@ -159,7 +182,6 @@ p i, small i {
     border: 2px solid var(--color-black);
 }
 
-/* Keep Filter Text Consistent */
 .filter-item span {
     font-family: 'Oswald', sans-serif;
     margin-top: 10px;
@@ -167,12 +189,13 @@ p i, small i {
     color: var(--color-border);
     text-transform: uppercase;
 }
-
-/* Make Entire Filter Clickable */
 .filter-link {
     display: inline-block;
-}
+} */
 
+.allfilters-container{
+  position: relative;
+}
 
 /* Events Container */
 .events-container {
@@ -360,6 +383,239 @@ a {
     cursor: pointer;  /* Shows pointer cursor on hover */
   }
 
+/* Filter Options Section */
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  
+}
+
+/* Filter Toggles */
+.filter-toggle {
+  display: none;
+}
+
+/* Filter Button */
+.filter-button {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Category Filter Container */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Category Scroll Container (for mobile) */
+/* Update these properties in your category-scroll class */
+.category-scroll {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* For momentum scrolling on iOS */
+  padding: 10px 0;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  justify-content: center;
+  
+  /* These are critical changes: */
+  touch-action: pan-x; /* Allow horizontal panning/scrolling */
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  scroll-snap-type: x proximity; /* Improve scrolling behavior */
+  white-space: nowrap; /* Prevent items from wrapping */
+  
+  /* Make it visually clear this is scrollable */
+  cursor: grab;
+}
+
+.category-scroll li {
+  list-style: none;
+}
+
+/* Hide scrollbar in Chrome/Safari */
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add a subtle effect for items */
+.filter-item {
+  flex: 0 0 auto; /* Prevent items from growing/shrinking */
+}
+
+/* Filter Items */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background-color: #f5f0e8;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.active-filter-item {
+  background-color: #fdbd5e;
+}
+
+.filter-item:hover {
+  transform: scale(1.05);
+  background-color: #fdbd5e;
+}
+
+.filter-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.filter-item span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Advanced Filters */
+.advanced-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.filter-dropdown {
+  position: relative;
+  z-index: 5;
+}
+
+.filter-dropdown select {
+  padding: 8px 30px 8px 15px;
+  border-radius: 20px;
+  border: 2px solid black;
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><path d="M0 0 L12 0 L6 6 Z" fill="black"/></svg>') no-repeat;
+  background-position: calc(100% - 10px) center;
+  background-color: white;
+  font-family: 'Oswald', sans-serif;
+  cursor: pointer;
+  min-width: 130px;
+}
+
+/* Mobile Filter Panel */
+.mobile-filter-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ECE4D6;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.mobile-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.mobile-filter-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.8rem;
+}
+
+.close-filter {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.mobile-filter-group {
+  margin-bottom: 30px;
+}
+
+.mobile-filter-group h3 {
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 15px;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.mobile-filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.filter-option input {
+  width: 20px;
+  height: 20px;
+}
+
+.filter-option label {
+  font-family: 'Roboto Flex', sans-serif;
+  font-size: 1rem;
+}
+
+.apply-filters {
+  background-color: #fdbd5e;
+  color: white;
+  border: 2px solid black;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apply-filters:hover {
+  transform: scale(1.03);
+}
+
+.loading-events-header {
+  font-family: 'Oswald', sans-serif;
+  margin: 20px 0;
+}
+
+
 @media (max-width: 1200px) {
   .event-box{
     min-width: 350px;
@@ -374,11 +630,17 @@ a {
     body {
       padding-top: 60px; /* Reduce space for smaller navbar */
     }
-  
+    .explore-header-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 0.5rem;
+    }
     /* Search container mobile layout */
     .search-container {
       flex-direction: row;
-      margin: 20px 15px;
+      /* margin: 20px 15px; */
       width: 90%;
     }
   
@@ -398,31 +660,12 @@ a {
     .search-btn .fa-magnifying-glass {
         font-size: 1.5rem;
     }
-  
-    /* Filter section adjustments */
-    .filter-container {
-      overflow-x: auto;
-      padding: 0 15px;
-      justify-content: flex-start;
-      scrollbar-width: none; /* Firefox */
-    }
-  
-    .filter-container::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
-    }
-  
-    .filter-item {
-      min-width: 70px;
-      margin: 0 8px;
-    }
-  
-    .filter-icon {
-      width: 60px;
-      height: 60px;
-    }
-  
-    .filter-item span {
-      font-size: 0.8rem;
+
+    main {
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 0px;
+      margin-top: 40px;
     }
   
     /* Events container adjustments */
@@ -451,6 +694,9 @@ a {
       width: 60px;
       height: 60px;
     }
+    .category-scroll li {
+      list-style: none;
+    }
   }
   
   @media (max-width: 480px) {
@@ -461,7 +707,8 @@ a {
   
     .search-container {
       width: 95%;
-      margin: 15px 10px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   
     .filter-icon {
@@ -502,3 +749,142 @@ a {
       border-width: 3px;
     }
   }
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .nav-logo img {
+      width: 150px;
+  }
+  
+  .bottom-nav {
+      display: flex;
+  }
+  
+  main {
+      margin-top: 20px;
+      padding-bottom: 70px;
+  }
+  
+  .explore-header {
+      font-size: 2rem;
+  }
+  
+  .filter-container {
+      margin-bottom: 20px;
+  }
+  
+  .filter-toggle {
+      display: block;
+  }
+  
+  
+  .events-container {
+      padding: 0;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  /* .filter-item {
+      width: 80px;
+      height: 80px;
+  }
+  
+  .filter-icon {
+      width: 30px;
+      height: 30px;
+  }
+  
+  .filter-item span {
+      font-size: 0.7rem;
+  } */
+
+  .category-scroll {
+    justify-content: flex-start;
+    gap: 0.55rem;
+    
+  }
+
+  .category-scroll {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Allow selection inside items when not scrolling */
+  .filter-link,
+  .filter-item {
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+  }
+
+  .filter-item {
+    width: 70px; 
+    height: 70px;
+    margin: 0 0px;
+    border-radius: 0%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background-color: transparent;
+  }
+  .filter-item:hover {
+    background-color: transparent;
+    border-bottom: 5px solid #000;
+  }
+
+  .active-filter-item {
+    background-color: transparent;
+    border-bottom: 5px solid #000;
+  }
+
+  .filter-item img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 0;
+  }
+
+  .category-scroll {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For momentum scrolling on iOS */
+    padding: 10px 0;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    
+    /* These are critical changes: */
+    touch-action: pan-x; /* Allow horizontal panning/scrolling */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scroll-snap-type: x proximity; /* Improve scrolling behavior */
+    white-space: nowrap; /* Prevent items from wrapping */
+    
+    /* Make it visually clear this is scrollable */
+    cursor: grab;
+  }
+
+
+  .advanced-filters {
+    display: none;
+  } 
+  .filter-button {
+    display: flex;
+    margin-left: auto;
+  } 
+
+  
+  .search-bar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .explore-header {
+      font-size: 1.8rem;
+  }
+}
+
+

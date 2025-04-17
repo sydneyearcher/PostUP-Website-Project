@@ -70,7 +70,7 @@ async function handleLoginRedirect () {
             // User is NOT logged in
             // alert('You need to log in first.');
             
-            // window.location.href = './pages/login.html';
+            // window.location.href = './index.html';
             return; // Stop execution
         } else if (loginStatus) {
             // User IS logged in

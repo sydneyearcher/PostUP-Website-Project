@@ -48,7 +48,7 @@ async function handleLoginRedirect() {
     try {
         const loginStatus = await checkUser();
         console.log('loginStatus: ', loginStatus);
-        if (loginStatus === undefined) {
+        if (loginStatus == undefined) {
              // User is NOT logged in
             // alert('You need to log in first.');
             

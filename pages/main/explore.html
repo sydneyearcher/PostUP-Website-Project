@@ -32,18 +32,150 @@
         <ul class="nav-links">
           <li><a href="explore.html" class="explore-nav-link active"><i class="fas fa-compass"></i> EXPLORE</a></li>
           <li><a href="saved_events.html" class="saved-nav-link"><i class="fas fa-calendar-alt"></i> EVENTS</a></li>
-          <li><a href="profile.html" class="profile-nav-link"><i class="fas fa-user"></i> PROFILE</a></li>
-          <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li>
+          <li><a href="rewards.html" class="rewards-nav-link"><i class="fas fa-gift"></i>REWARDS</a></li>
+          <li><a href="profile.html" class="profile-nav-link"><i class="fas fa-user"></i>PROFILE</a></li>
+          <!-- <li><a href="../../index.html" class="logout-btn" id="logoutButton"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></li> -->
         </ul>
       </nav>
     </header>
 
     <main>
       <!-- Header for Explore Page -->
-      <h1 class="explore-header">Explore Page</h1>
-
-      
-      <!-- Search Bar -->
+      <div class="explore-header-container">
+        <h1 class="explore-header">Explore Events near</h1>
+        <div class="location-container">
+          <p class="location-icon">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="location-text"> Orlando, FL</span>
+          </p>
+        </div>
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search for events..."
+          />
+          <button class="search-btn">
+            <span class="sr-only">Search</span>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+      <div class="allfilters-container">
+        <div class="filter-options">
+          <!-- Filter button for mobile -->
+          <button class="filter-button">
+            <i class="fas fa-filter"></i> Filters
+          </button>
+          
+          <!-- Advanced filters for desktop -->
+          <div class="advanced-filters">
+            <div class="filter-dropdown">
+              <select name="distance" id="distance">
+                <option value="">Distance</option>
+                <option value="5miles">5 miles</option>
+                <option value="10miles">10 miles</option>
+                <option value="25miles">25 miles</option>
+                <option value="50miles">50+ miles</option>
+              </select>
+            </div>
+            
+            <div class="filter-dropdown">
+              <select name="date" id="date">
+                <option value="">Date</option>
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="thisweek">This Week</option>
+                <option value="thismonth">This Month</option>
+              </select>
+            </div>
+            
+            <div class="filter-dropdown">
+              <select name="admission" id="admission">
+                <option value="">Admission</option>
+                <option value="free">Free</option>
+                <option value="paid">Paid</option>
+                <option value="donation">Donation</option>
+              </select>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Category Filters -->
+        <div class="filter-container">
+          <ul class="category-scroll">
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img
+                    src="../../images/musiclogo.png"
+                    alt="Live Music"
+                  />
+                </i>
+                <span>Live Music</span>
+              </button>
+            </li>
+  
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img
+                    src="../../images/foodicon.png"
+                    alt="Food Market"
+                  />
+                </i>
+                <span>Food Market</span>
+              </button>
+            </li>
+  
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img src="../../images/articon.png" alt="Art Market" />
+                </i>
+                <span>Art Market</span>
+              </button>
+            </li>
+  
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img
+                    src="../../images/festivalicon.png"
+                    alt="Festivals"
+                    class="filter-icon"
+                  />
+                </i>
+                <span>Festivals</span>
+              </button>
+            </li>
+  
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img src="../../images/sporticon.png" alt="Sports"/>
+                </i>
+                <span>Sports</span>
+              </button>
+            </li>
+  
+            <li class="filter-link">
+              <button class="filter-item">
+                <i class="filter-icon" >
+                  <img
+                    src="../../images/othericon.png"
+                    alt="Other Events"
+                  />
+                </i>
+                <span>Other</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+     
+<!-- 
       <div class="search-container">
         <input
           type="text"
@@ -57,7 +189,7 @@
       </div>
 
       <section class="filter-container">
-        <!-- Live Music -->
+        
         <a href="../events/livemusic.html" class="filter-link">
           <div class="filter-item">
             <img
@@ -69,7 +201,6 @@
           </div>
         </a>
 
-        <!-- Food Market -->
         <a href="../events/foodmarkets.html" class="filter-link">
           <div class="filter-item">
             <img
@@ -81,7 +212,6 @@
           </div>
         </a>
 
-        <!-- Art Markets -->
         <a href="../events/artmarkets.html" class="filter-link">
           <div class="filter-item">
             <img src="../../images/articon.png" alt="Art Market" class="filter-icon" />
@@ -89,7 +219,6 @@
           </div>
         </a>
 
-        <!-- Festivals -->
         <a href="../events/festivals.html" class="filter-link">
           <div class="filter-item">
             <img
@@ -101,7 +230,6 @@
           </div>
         </a>
 
-        <!-- Sports -->
         <a href="../events/sporting.html" class="filter-link">
           <div class="filter-item">
             <img src="../../images/sporticon.png" alt="Sports" class="filter-icon" />
@@ -109,7 +237,6 @@
           </div>
         </a>
 
-        <!-- Other -->
         <a href="../events/other.html" class="filter-link">
           <div class="filter-item">
             <img
@@ -120,7 +247,7 @@
             <span>Other</span>
           </div>
         </a>
-      </section>
+      </section> -->
 
       <!-- Events Section -->
       <section class="events-container" id="events-container">
@@ -140,158 +267,92 @@
               repeatCount="indefinite" />
           </path>
         </svg>
-  <!--  
-        <div class="event-box">
-          <img
-            src="../../images/nessabarrett.png"
-            alt="Live Music Event"
-            class="event-image"
-          />
-          
-          <a href="../events/eventOV.html" class="clickable-text">
-            <p class="event-title">
-              Nessa Barrett - <br />
-              AFTERCARE World Tour
-            </p>
-          </a>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/milkmart.png"
-            alt="Food Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Milk Mart - <br />
-            Orlando, FL
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/eastorlando.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            East Orlando - <br />
-            Farmers Market
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/coldvisions.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Bladee - <br />
-            COLD VISIONS World Tour
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img src="../../images/EDC.png" alt="Art Market Event" class="event-image" />
-          <p class="event-title">
-            EDC - <br />
-            Orlando, FL
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img src="../../images/OMA.png" alt="Art Market Event" class="event-image" />
-          <p class="event-title">
-            Orlando Museum of Art - <br />
-            Relationships Exhbiit
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/filmfestival.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Love Your Shorts - <br />
-            Film Festival
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/windemere.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Windemere, Orlando - <br />
-            Farmer's Market
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/lakenonaart.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Lake Nona - <br />
-            Art Festival
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="event-box">
-          <img
-            src="../../images/avalonpark.png"
-            alt="Art Market Event"
-            class="event-image"
-          />
-          <p class="event-title">
-            Avalon Park - <br />
-            Fall Craft Fair
-          </p>
-          <button class="save-btn" onclick="toggleHeart(this)">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div> -->
       </section>
+
+      <!-- Mobile Filter Panel -->
+    <div class="mobile-filter-panel">
+      <div class="mobile-filter-header">
+        <h2 class="mobile-filter-title">Filters</h2>
+        <button class="close-filter">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="mobile-filter-group">
+        <h3>Distance</h3>
+        <div class="mobile-filter-options">
+          <div class="filter-option">
+            <input type="radio" id="distance-5" name="distance" value="5miles">
+            <label for="distance-5">5 miles</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="distance-10" name="distance" value="10miles">
+            <label for="distance-10">10 miles</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="distance-25" name="distance" value="25miles">
+            <label for="distance-25">25 miles</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="distance-50" name="distance" value="50miles">
+            <label for="distance-50">50+ miles</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mobile-filter-group">
+        <h3>Date</h3>
+        <div class="mobile-filter-options">
+          <div class="filter-option">
+            <input type="radio" id="date-today" name="date" value="today">
+            <label for="date-today">Today</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-tomorrow" name="date" value="tomorrow">
+            <label for="date-tomorrow">Tomorrow</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-week" name="date" value="thisweek">
+            <label for="date-week">This Week</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="date-month" name="date" value="thismonth">
+            <label for="date-month">This Month</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mobile-filter-group">
+        <h3>Admission</h3>
+        <div class="mobile-filter-options">
+          <div class="filter-option">
+            <input type="radio" id="admission-none" name="admission">
+            <label for="admission-none">Admission</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="admission-free" name="admission" value="free">
+            <label for="admission-free">Free</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="admission-paid" name="admission" value="paid">
+            <label for="admission-paid">Paid</label>
+          </div>
+          <div class="filter-option">
+            <input type="radio" id="admission-donation" name="admission" value="donation">
+            <label for="admission-donation">Donation</label>
+          </div>
+        </div>
+      </div>
+      
+      <button class="apply-filters">Apply Filters</button>
+    </div>
+    
 
     </main>
     <script src="../../js/scripts.js"></script>
     <script src="../../js/supabase.js"></script>
     <script src="../../js/util/checkUser.js"></script>
     <script src="../../js/main/explore.js"></script>
-    <script src="../../js/auth/logout.js"></script>
+    <!-- <script src="../../js/auth/logout.js"></script> -->
   </body>
 </html>

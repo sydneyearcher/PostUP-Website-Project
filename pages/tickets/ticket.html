@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PostUP - Ticket Purchasing</title>
+   
     <link rel="stylesheet" href="../../css/tickets/ticket.css" />
+    <link rel="stylesheet" href="../../css/global/globals.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;300;400;500&family=Oswald:wght@400;600&family=Anton&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   </head>
@@ -29,7 +35,7 @@
             <svg class="back-btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Back to Event Overview
+            Back to Overview
           </a>
           <h2 class="page-title">LET’S GET YOU THOSE TICKETS!</h2>
         </div>
@@ -68,7 +74,7 @@
 
           <fieldset class="form-group">
             <label for="ticket-holdername" class="form-label">For Who?</label>
-            <input type="text" id="ticket-holdername" name="name" placeholder="Enter the name of your ticket holder">
+            <input type="text" id="ticket-holdername" name="name" placeholder="Enter the name of your ticket holder" required>
           </fieldset>
 
           <fieldset class="price-breakdown">
@@ -77,15 +83,17 @@
             <p><span>Order Processing:</span> <span id="processing-fee-price">$10.12</span></p>
             <p class="total"><span>Total:</span> <span id="total-ticket-price">$151.07</span></p>
           </fieldset>
-
+          <fieldset class="form-group cta-buttons">
           <!-- <a href="../tickets/purchased.html" ></a> -->
-          <button 
-            type="submit" 
-            class="pay-btn" 
-            
-            >
-          Pay
-          </button>
+            <button 
+              type="submit" 
+              class="pay-btn" 
+              
+              >
+              <i class="fa-solid fa-money-check-dollar"></i>
+            <strong>Pay</strong>
+            </button>
+          </fieldset>
         </form>
       </div>
       

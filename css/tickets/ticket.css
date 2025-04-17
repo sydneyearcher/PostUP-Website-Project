@@ -31,30 +31,31 @@ main {
 /* Logo Positioned Outside Navbar */
 .nav-logo {
     position: absolute;
-    left: -10px;
-    top: -30px;
+    left: 0px;
+    top: 0px;
 }
 
 .nav-logo img {
-    width: 200px;
+    width: var(--nav-logo-mobile-width);
 }
+
 
 /* Ticket Selection Wrapper (New Addition) */
 .ticket-selection-wrapper {
     background-color: #ECE4D6;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     border-radius: 20px;
-    border: 3px solid #000000;  /* Black border around the ticket purchasing section */
-    margin: 30px auto;  /* Center the section and add space around it */
+    margin-bottom: 30px;
+    border: 3px solid #000000;
+    font-family: 'Oswald', sans-serif;
     width: 100%;
-    max-width: 600px;  /* Limit the width for cleaner look */
+    max-width: 800px;
 }
 
 /* Ticket Selection Section */
-.ticket-selection {
-    padding: 20px;
-}
-
 .ticket-header {
     color: #000000;
     display: flex;
@@ -68,10 +69,9 @@ main {
 
 #back-explore-btn {
     position: absolute;
-    top: 0;
-    left: 0; /* Move to the top-right corner */
-    font-size: 0.75rem;
-    font-weight: bold;
+    top: 1.5rem;
+    left: 0rem; /* Move to the top-right corner */
+    font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     text-decoration: none;
     color: #333;
@@ -79,6 +79,7 @@ main {
     display: flex;
     align-items: center;
     gap: 5px;
+    font-weight: bold;
 }
 
 .back-btn-icon {
@@ -107,7 +108,7 @@ main {
 /* Number of Tickets Input */
 .ticket-selection input[type="number"], input[type="text"] {
     font-family: 'Oswald', sans-serif;
-    width: 100%;
+    width: fit-content;
     padding: 12px;
     margin: 10px 0;
     font-size: 1rem;
@@ -132,6 +133,7 @@ main {
 
 /* Updated Button Styling for Ticket Selection */
 .ticket-selection .pay-btn {
+    width: 100%;
     font-family: 'Oswald', sans-serif;
     background-color: #fdbd5e;
     border: none;
@@ -141,8 +143,8 @@ main {
     text-transform: uppercase;
     color: #000000;
     cursor: pointer;
-    margin-top: 20px;
     border: 2.5px solid #000000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .ticket-selection .pay-btn:hover {
@@ -157,7 +159,6 @@ main {
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 20px;
-    font-size: 1.2rem;
     letter-spacing: 1px;
 }
 
@@ -179,9 +180,15 @@ fieldset{
     border: none;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* 
 .form-group {
     margin-bottom: 20px;
-}
+} */
 
 .form-label {
     display: block;
@@ -194,6 +201,7 @@ fieldset{
     display: flex;
     width: 100%;
     align-items: center;
+    justify-content: center;
 }
 
 .quantity-control {
@@ -212,11 +220,13 @@ fieldset{
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
-.quantity-btn:hover {
-    transform: scale(1.1);
+.quantity-btn:hover, .quantity-btn:focus, .pay-btn:hover, .pay-btn:focus {
+    transform: scale(1.025);
+    background-color: #000;
+    color: #fdbd5e;
 }
 
 
@@ -243,7 +253,6 @@ select, input[type="text"] {
     background-color: #E6DCD0;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
 }
 
 .price-breakdown p {
@@ -259,20 +268,27 @@ select, input[type="text"] {
     padding-top: 10px;
 }
 
-.pay-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #fdbd5e;
-    border: 3px solid #000;
-    border-radius: 30px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0.5rem;
 }
 
-.pay-btn:hover {
-    transform: scale(1.05);
-    background-color: #ffd090;
+
+/* Media Queries */
+@media (max-width: 768px) {
+    
+    body, main, .ticket-selection-wrapper {
+        padding-bottom: 0px !important;
+        margin-bottom: 0px !important;
+    }
+    
+    .nav-logo {
+        position: absolute;
+        padding-top: 10px;
+        padding-left: 0px;
+        right:0px !important;
+        left: auto !important;
+        padding-right: 10px;
+    }
 }

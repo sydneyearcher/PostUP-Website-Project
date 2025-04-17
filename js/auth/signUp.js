@@ -67,17 +67,18 @@ async function handleSignup(event) {
     const email = document.getElementById('signup-email').value;
     const phonenumber = document.getElementById('signup-phone-number').value;
     const password = document.getElementById('signup-password').value;
-    
+    const city = document.getElementById('signup-city').value;
+    const state = document.getElementById('signup-state').value;
+    const location = city && state ? `${city}, ${state}` : city || state || "";
 
     console.log(fullname, username, email, phonenumber, password);
     try {
-        // 1. First, create user in Supabase Auth
+        // 1. Create Auth user
         const { data: authData, error: authError } = await _supabase.auth.signUp({
             email: email,
             phone: phonenumber,
             password: password,
             options: {
-                // Optional: include any additional metadata
                 data: {
                     display_name: username,
                     full_name: fullname,
@@ -85,38 +86,60 @@ async function handleSignup(event) {
                 }
             }
         });
-        
         if (authError) throw authError;
-        
-        // 2. If auth successful, create a profile in your custom profiles table
+        console.log("Auth user created:", authData.user.id);
+
+        // 2. Geocode location (if provided)
+        let lat, lng;
+        if (location) {
+            console.log("Geocoding location:", location);
+            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=AIzaSyDradz2mjYgwEDQP2TJ195DIcaSj3KTcxk`;
+            const response = await fetch(geocodeUrl);
+            const data = await response.json();
+            if (data.status !== "OK") throw new Error("Geocoding failed: " + data.status);
+            lat = data.results[0].geometry.location.lat;
+            lng = data.results[0].geometry.location.lng;
+        }
+
+        // 3. Insert profile (even if location is empty)
+        const profileData = {
+            id: authData.user.id,
+            username: username,
+            email: email,
+            phone_number: phonenumber,
+            full_name: fullname,
+            ...(location && { location: location }), // Include if exists
+            ...(lat && lng && { 
+                latitude: lat,
+                longitude: lng,
+                geolocation: `POINT(${lng} ${lat})`
+            })
+        };
+
         const { error: profileError } = await _supabase
             .from('profiles')
-            .insert([
-                { 
-                    id: authData.user.id,  // Use the auth user's ID as the profile ID
-                    username: username,
-                    email: email,
-                    phone_number: phonenumber,
-                    full_name: fullname,
-                    // Add any other profile-specific fields
-                }
-            ]);
+            .insert(profileData);
         
-        if (profileError) throw profileError;
+        if (profileError) {
+            console.error("Profile Error Details:", profileError);
+            throw profileError;
+        }
+
+        alert('Signup successful! Check your email to verify.');
         
-        // 3. Handle successful signup
-        alert('Signup successful! Please check your email to verify.');
-        
-        // Optional: Automatically sign in the user
-        const { data, error } = await _supabase.auth.signInWithPassword({
+        // Optional: Auto-login
+        const { data, error: loginError } = await _supabase.auth.signInWithPassword({
             email,
             password,
         });
+        if (loginError) throw loginError;
         
-        // Refresh the page or update UI
-        await handleLoginRedirect();
+        // Redirect to location page
+        window.location.href = 'location.html';
+
     } catch (error) {
-        console.error('Signup error:', error);
+        console.error('Signup Error:', error);
         alert(`Signup failed: ${error.message}`);
     }
 }
+

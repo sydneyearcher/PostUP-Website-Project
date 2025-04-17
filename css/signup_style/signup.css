@@ -17,6 +17,12 @@ body {
     overflow-y: auto; /* Allow vertical scrolling */
     transition: background-color 0.5s ease;
 }
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width:100%
+  }
 
 /* Loading Screen */
 #loadingScreen {
@@ -67,21 +73,78 @@ body {
     color: rgb(0, 0, 0);
 }
 
-/* Input Fields */
-.input-field {
-    display: block; /* Ensure input fields are on separate lines */
-    font-family: 'Anton', sans-serif;
-    width: 100%;
-    max-width: 350px; /* Shorter width for input fields */
-    padding: 12px;
-    margin: 15px 0;
+
+/* Form styling */
+.form-field {
+    text-align: left;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .form-field label {
+    font-weight: 600;
+    color: #000000;
+    display: block;
     font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .form-field input, 
+  .form-field select, 
+  .form-field textarea {
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .form-field input:focus, 
+  .form-field select:focus, 
+  .form-field textarea:focus {
+    outline: 2px solid;
+    outline-color: #faa019;
+  }
+
+  
+
+/* Buttons */
+.btn {
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: black;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase; /* Capitalize button text */
+}
+
+button.btn {
+    font-family: 'Anton', sans-serif;
+    padding: 12px 25px;
+    font-size: 1.2rem;
     border: 2.5px solid #000;
     border-radius: 20px;
-    background-color: #f7f7f7;
-    color: #1a1a1a;
-    /*text-transform: uppercase;  Capitalize text inside inputs */
-    max-height: 50px; /* Limit height to prevent excessive field size */
+    cursor: pointer;
+    background-color: #fdbd5e;
+    color: black;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase; /* Capitalize button text */
+}
+
+button.btn:hover, button.btn:active {
+    background-color: rgb(0, 0, 0);
+    color:rgb(255, 184, 77);
+}
+
+a.btn:hover, a.btn:active {
+    color: rgb(0, 0, 0);
 }
 
 /* Buttons */
@@ -110,7 +173,7 @@ body {
 }
 
 /* Form Container Centering */
-#signUpForm {
+/* #signUpForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,16 +184,41 @@ body {
     background-color: #ECE4D6;
     margin: 0 auto;
     box-sizing: border-box;
+    height: 100%;
+} */
+ /* Form Container Centering */
+#signUpForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 350px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;    
+    background-color: #ECE4D6;
+    margin: 0 auto;
+    box-sizing: border-box;
     height: 100%; /* Allow full height */
+    gap: 0.5rem;
 }
 
-/* Space Between Input Fields */
-#signUpForm .input-field {
-    margin-bottom: 20px; /* Increased space between input fields */
+.submit-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    margin-top: 20px;
 }
-
+a.btn{
+    display:block;
+    text-align: center;
+    color: #454545;
+}
 /* Buttons */
-#signUpPage .btn {
+#signUpPage button.btn {
     width: 100%;
     max-width: 300px;
     font-family: 'Anton', sans-serif;
@@ -152,7 +240,7 @@ a.btn, a.back-to-login {
     border: 2.5px solid #000000; /* Black border */
     border-radius: 25px;
     cursor: pointer;
-    background-color: #fdbd5e;
+    background-color: transparent;
     color: black;
     text-decoration: none; /* Remove underline */
     transition: background-color 0.3s ease;
@@ -168,7 +256,7 @@ a.back-to-login {
 }
 
 a.btn:hover, a.back-to-login:hover {
-    background-color: rgb(255, 184, 77);
+    background-color: rgb(255, 255, 255);
 }
 
 a.btn:active, a.back-to-login:active {
